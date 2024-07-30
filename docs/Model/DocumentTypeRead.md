@@ -1,0 +1,13 @@
+# # DocumentTypeRead
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **string** | Unique Id for the contact group | [optional]
+**code** | **string** | Unique Code for the contact group | [optional]
+**description** | **string** | Description for the contact group | [optional]
+**author** | **bool** | Author of the contact group | [optional]
+**docTypeSetup** | [**\SynergiTech\Iplicit\Model\DocumentTypeSetupRead**](DocumentTypeSetupRead.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

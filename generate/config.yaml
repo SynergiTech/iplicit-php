@@ -1,0 +1,17 @@
+templateDir: /local/generate/template
+additionalProperties:
+  artifactVersion: 1.8.0
+  composerPackageName: synergitech/iplicit-php
+  developerOrganization: "Synergi Tech"
+  developerOrganizationUrl: https://synergi.tech
+  invokerPackage: SynergiTech\Iplicit
+  licenseName: MIT
+  packageName: Iplicit-PHP
+  variableNamingConvention: camelCase
+files:
+  api.mustache:
+    templateType: API
+    destinationFilename: .php
+  Configuration.mustache:
+    templateType: SupportingFiles
+    destinationFilename: src/Configuration.php

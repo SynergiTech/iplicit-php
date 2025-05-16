@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **ext** | **array<string,mixed>** | The product custom fields | [optional]
 **purchase** | [**\SynergiTech\Iplicit\Model\ProductPurchaseCreate**](ProductPurchaseCreate.md) |  | [optional]
 **sale** | [**\SynergiTech\Iplicit\Model\ProductSaleCreate**](ProductSaleCreate.md) |  | [optional]
+**stock** | [**\SynergiTech\Iplicit\Model\ProductStockCreate**](ProductStockCreate.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

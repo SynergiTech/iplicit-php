@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **docTypeId** | **string** | The document type id | [optional]
 **legalEntityId** | **string** | The document legal entity id | [optional]
+**cdacId** | **string** | The document custom data access control (CDAC) Id | [optional]
 **contactAccountId** | **string** | The document contact account id | [optional]
 **periodId** | **string** | The document period id | [optional]
 **accountId** | **string** | The document account id | [optional]
@@ -19,13 +20,13 @@ Name | Type | Description | Notes
 **taxDate** | **\DateTime** | The document tax date | [optional]
 **dueDate** | **\DateTime** | The document due date | [optional]
 **currency** | **string** | Currency code. See &#x60;Currency&#x60; catalog. (ISO 4217) | [optional]
-**currencyRate** | **float** | The document curerncy rate | [optional]
+**currencyRate** | **float** | The document currency rate | [optional]
 **isNetEntry** | **bool** | The document is net entry flag | [optional]
 **theirDocNo** | **string** | An external document number | [optional]
 **theirRef** | **string** | An external reference code | [optional]
 **intRef** | **string** | Optional interface reference. If provided, it must be unique. &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;Learn more&lt;/a&gt; | [optional]
 **legacyRef** | **string** | Alternative / legacy reference code | [optional]
-**details** | [**\SynergiTech\Iplicit\Model\DocDetailUpdate[]**](DocDetailUpdate.md) | The document detail itemms | [optional]
+**details** | [**\SynergiTech\Iplicit\Model\DocDetailUpdate[]**](DocDetailUpdate.md) | The document detail items | [optional]
 **bankAccountId** | **string** | The document bank account id | [optional]
 **bankCurrencyRate** | **float** | The document bank currency rate | [optional]
 **bankCurrencyAmount** | **float** | The document bank currency amount | [optional]
@@ -39,5 +40,7 @@ Name | Type | Description | Notes
 **ext** | **array<string,mixed>** | Teh document custom fields | [optional]
 **textHeader** | **string** | The document header text | [optional]
 **textFooter** | **string** | The document footer text | [optional]
+**orderNo** | **string** | The document order number | [optional]
+**deliveryDate** | **\DateTime** | The document delivery date | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

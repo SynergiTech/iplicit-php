@@ -23,7 +23,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `addProjectMilstones()`
 
 ```php
-addProjectMilstones($projectRef, $projectMilestoneCreate)
+addProjectMilstones($projectRef, $domain, $projectMilestoneCreate)
 ```
 
 Add a project milestone
@@ -35,6 +35,9 @@ Add a project milestone
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -42,10 +45,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $projectMilestoneCreate = new \SynergiTech\Iplicit\Model\ProjectMilestoneCreate(); // \SynergiTech\Iplicit\Model\ProjectMilestoneCreate
 
 try {
-    $apiInstance->addProjectMilstones($projectRef, $projectMilestoneCreate);
+    $apiInstance->addProjectMilstones($projectRef, $domain, $projectMilestoneCreate);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->addProjectMilstones: ', $e->getMessage(), PHP_EOL;
 }
@@ -56,6 +60,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **projectMilestoneCreate** | [**\SynergiTech\Iplicit\Model\ProjectMilestoneCreate**](../Model/ProjectMilestoneCreate.md)|  | [optional] |
 
 ### Return type
@@ -64,7 +69,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -78,7 +83,7 @@ No authorization required
 ## `addProjectResourceAvailability()`
 
 ```php
-addProjectResourceAvailability($projectRef, $projectAvailabilityCreate)
+addProjectResourceAvailability($projectRef, $domain, $projectAvailabilityCreate)
 ```
 
 Add a project resource availability
@@ -90,6 +95,9 @@ Add a project resource availability
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -97,10 +105,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $projectAvailabilityCreate = array(new \SynergiTech\Iplicit\Model\ProjectAvailabilityCreate()); // \SynergiTech\Iplicit\Model\ProjectAvailabilityCreate[] |
 
 try {
-    $apiInstance->addProjectResourceAvailability($projectRef, $projectAvailabilityCreate);
+    $apiInstance->addProjectResourceAvailability($projectRef, $domain, $projectAvailabilityCreate);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->addProjectResourceAvailability: ', $e->getMessage(), PHP_EOL;
 }
@@ -111,6 +120,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **projectAvailabilityCreate** | [**\SynergiTech\Iplicit\Model\ProjectAvailabilityCreate[]**](../Model/ProjectAvailabilityCreate.md)|  | [optional] |
 
 ### Return type
@@ -119,7 +129,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -133,7 +143,7 @@ No authorization required
 ## `createProject()`
 
 ```php
-createProject($projectCreate): string
+createProject($domain, $projectCreate): string
 ```
 
 Create a project
@@ -145,16 +155,20 @@ Create a project
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $projectCreate = new \SynergiTech\Iplicit\Model\ProjectCreate(); // \SynergiTech\Iplicit\Model\ProjectCreate
 
 try {
-    $result = $apiInstance->createProject($projectCreate);
+    $result = $apiInstance->createProject($domain, $projectCreate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->createProject: ', $e->getMessage(), PHP_EOL;
@@ -165,6 +179,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **projectCreate** | [**\SynergiTech\Iplicit\Model\ProjectCreate**](../Model/ProjectCreate.md)|  | [optional] |
 
 ### Return type
@@ -173,7 +188,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -187,7 +202,7 @@ No authorization required
 ## `deleteProjectMilstones()`
 
 ```php
-deleteProjectMilstones($projectRef, $milestoneIdOrCode)
+deleteProjectMilstones($projectRef, $milestoneIdOrCode, $domain)
 ```
 
 Delete a project milestone
@@ -199,6 +214,9 @@ Delete a project milestone
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -207,9 +225,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
 $milestoneIdOrCode = 'milestoneIdOrCode_example'; // string
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->deleteProjectMilstones($projectRef, $milestoneIdOrCode);
+    $apiInstance->deleteProjectMilstones($projectRef, $milestoneIdOrCode, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->deleteProjectMilstones: ', $e->getMessage(), PHP_EOL;
 }
@@ -221,6 +240,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
 | **milestoneIdOrCode** | **string**|  | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -228,7 +248,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -242,7 +262,7 @@ No authorization required
 ## `deleteProjectResourceAvailability()`
 
 ```php
-deleteProjectResourceAvailability($projectRef, $projectAvailabilityCreate)
+deleteProjectResourceAvailability($projectRef, $domain, $projectAvailabilityCreate)
 ```
 
 Delete a project resource availability
@@ -254,6 +274,9 @@ Delete a project resource availability
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -261,10 +284,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $projectAvailabilityCreate = array(new \SynergiTech\Iplicit\Model\ProjectAvailabilityCreate()); // \SynergiTech\Iplicit\Model\ProjectAvailabilityCreate[] |
 
 try {
-    $apiInstance->deleteProjectResourceAvailability($projectRef, $projectAvailabilityCreate);
+    $apiInstance->deleteProjectResourceAvailability($projectRef, $domain, $projectAvailabilityCreate);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->deleteProjectResourceAvailability: ', $e->getMessage(), PHP_EOL;
 }
@@ -275,6 +299,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **projectAvailabilityCreate** | [**\SynergiTech\Iplicit\Model\ProjectAvailabilityCreate[]**](../Model/ProjectAvailabilityCreate.md)|  | [optional] |
 
 ### Return type
@@ -283,7 +308,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -297,7 +322,7 @@ No authorization required
 ## `getProject()`
 
 ```php
-getProject($projectRef, $include): \SynergiTech\Iplicit\Model\Project
+getProject($projectRef, $domain, $include, $includeClosed): \SynergiTech\Iplicit\Model\Project
 ```
 
 Get a project
@@ -309,6 +334,9 @@ Get a project
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -316,10 +344,12 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $include = 'include_example'; // string | Comma separated list of details to include: `address`, `ext`, `availability`, `milestones`, `subProjects`.
+$includeClosed = True; // bool | Include closed projects
 
 try {
-    $result = $apiInstance->getProject($projectRef, $include);
+    $result = $apiInstance->getProject($projectRef, $domain, $include, $includeClosed);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->getProject: ', $e->getMessage(), PHP_EOL;
@@ -331,7 +361,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **include** | **string**| Comma separated list of details to include: &#x60;address&#x60;, &#x60;ext&#x60;, &#x60;availability&#x60;, &#x60;milestones&#x60;, &#x60;subProjects&#x60;. | [optional] |
+| **includeClosed** | **bool**| Include closed projects | [optional] |
 
 ### Return type
 
@@ -339,7 +371,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -353,7 +385,7 @@ No authorization required
 ## `getProjectResourceAvailability()`
 
 ```php
-getProjectResourceAvailability($projectRef): \SynergiTech\Iplicit\Model\ProjectAvailability[]
+getProjectResourceAvailability($projectRef, $domain): \SynergiTech\Iplicit\Model\ProjectAvailability[]
 ```
 
 Get a project resource availability
@@ -365,6 +397,9 @@ Get a project resource availability
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -372,9 +407,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getProjectResourceAvailability($projectRef);
+    $result = $apiInstance->getProjectResourceAvailability($projectRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->getProjectResourceAvailability: ', $e->getMessage(), PHP_EOL;
@@ -386,6 +422,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -393,7 +430,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -407,7 +444,7 @@ No authorization required
 ## `getProjects()`
 
 ```php
-getProjects($projectGroupCode, $projectGroupId, $parentProjectCode, $parentProjectId, $legalEntityCode, $legalEntityId, $contactAccountCode, $contactAccountId, $lastModifiedFrom, $lastModifiedTo, $includeClosed, $isActive, $include, $take, $skip): \SynergiTech\Iplicit\Model\Project[]
+getProjects($domain, $projectGroupCode, $projectGroupId, $parentProjectCode, $parentProjectId, $legalEntityCode, $legalEntityId, $contactAccountCode, $contactAccountId, $lastModifiedFrom, $lastModifiedTo, $includeClosed, $isActive, $include, $take, $skip): \SynergiTech\Iplicit\Model\Project[]
 ```
 
 Get a list of projects with a search filter
@@ -419,12 +456,16 @@ Get a list of projects with a search filter
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $projectGroupCode = 'projectGroupCode_example'; // string
 $projectGroupId = 'projectGroupId_example'; // string
 $parentProjectCode = 'parentProjectCode_example'; // string
@@ -433,8 +474,8 @@ $legalEntityCode = 'legalEntityCode_example'; // string
 $legalEntityId = 'legalEntityId_example'; // string
 $contactAccountCode = 'contactAccountCode_example'; // string
 $contactAccountId = 'contactAccountId_example'; // string
-$lastModifiedFrom = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
-$lastModifiedTo = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$lastModifiedFrom = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$lastModifiedTo = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $includeClosed = True; // bool | By default, only active projects will be returned. Set this to true to include closed projects.
 $isActive = True; // bool | Search by active status. True=only active projects, False= only closed projects
 $include = 'include_example'; // string | Comma separated list of details to include: `address`, `ext`, `availability`, `milestones`, `subProjects`.
@@ -442,7 +483,7 @@ $take = 100; // int | Number of records to select. Default = 100. Max 500.
 $skip = 0; // int | Number of records to skip. Used for pagination.
 
 try {
-    $result = $apiInstance->getProjects($projectGroupCode, $projectGroupId, $parentProjectCode, $parentProjectId, $legalEntityCode, $legalEntityId, $contactAccountCode, $contactAccountId, $lastModifiedFrom, $lastModifiedTo, $includeClosed, $isActive, $include, $take, $skip);
+    $result = $apiInstance->getProjects($domain, $projectGroupCode, $projectGroupId, $parentProjectCode, $parentProjectId, $legalEntityCode, $legalEntityId, $contactAccountCode, $contactAccountId, $lastModifiedFrom, $lastModifiedTo, $includeClosed, $isActive, $include, $take, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->getProjects: ', $e->getMessage(), PHP_EOL;
@@ -453,6 +494,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **projectGroupCode** | **string**|  | [optional] |
 | **projectGroupId** | **string**|  | [optional] |
 | **parentProjectCode** | **string**|  | [optional] |
@@ -475,7 +517,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -489,7 +531,7 @@ No authorization required
 ## `lockProject()`
 
 ```php
-lockProject($projectRef)
+lockProject($projectRef, $domain)
 ```
 
 Lock a project
@@ -501,6 +543,9 @@ Lock a project
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -508,9 +553,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->lockProject($projectRef);
+    $apiInstance->lockProject($projectRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->lockProject: ', $e->getMessage(), PHP_EOL;
 }
@@ -521,6 +567,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -528,7 +575,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -542,7 +589,7 @@ No authorization required
 ## `projectMilstones()`
 
 ```php
-projectMilstones($projectRef): \SynergiTech\Iplicit\Model\ProjectMilestone[]
+projectMilstones($projectRef, $domain): \SynergiTech\Iplicit\Model\ProjectMilestone[]
 ```
 
 Get a project milestones
@@ -554,6 +601,9 @@ Get a project milestones
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -561,9 +611,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->projectMilstones($projectRef);
+    $result = $apiInstance->projectMilstones($projectRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->projectMilstones: ', $e->getMessage(), PHP_EOL;
@@ -575,6 +626,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -582,7 +634,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -596,7 +648,7 @@ No authorization required
 ## `replaceProjectMilstones()`
 
 ```php
-replaceProjectMilstones($projectRef, $projectMilestoneCreate)
+replaceProjectMilstones($projectRef, $domain, $projectMilestoneCreate)
 ```
 
 Replace all project milestones
@@ -608,6 +660,9 @@ Replace all project milestones
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -615,10 +670,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $projectMilestoneCreate = array(new \SynergiTech\Iplicit\Model\ProjectMilestoneCreate()); // \SynergiTech\Iplicit\Model\ProjectMilestoneCreate[]
 
 try {
-    $apiInstance->replaceProjectMilstones($projectRef, $projectMilestoneCreate);
+    $apiInstance->replaceProjectMilstones($projectRef, $domain, $projectMilestoneCreate);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->replaceProjectMilstones: ', $e->getMessage(), PHP_EOL;
 }
@@ -629,6 +685,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **projectMilestoneCreate** | [**\SynergiTech\Iplicit\Model\ProjectMilestoneCreate[]**](../Model/ProjectMilestoneCreate.md)|  | [optional] |
 
 ### Return type
@@ -637,7 +694,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -651,7 +708,7 @@ No authorization required
 ## `replaceProjectResourceAvailability()`
 
 ```php
-replaceProjectResourceAvailability($projectRef, $projectAvailabilityCreate)
+replaceProjectResourceAvailability($projectRef, $domain, $projectAvailabilityCreate)
 ```
 
 Replace a project resource availability
@@ -663,6 +720,9 @@ Replace a project resource availability
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -670,10 +730,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $projectAvailabilityCreate = array(new \SynergiTech\Iplicit\Model\ProjectAvailabilityCreate()); // \SynergiTech\Iplicit\Model\ProjectAvailabilityCreate[] |
 
 try {
-    $apiInstance->replaceProjectResourceAvailability($projectRef, $projectAvailabilityCreate);
+    $apiInstance->replaceProjectResourceAvailability($projectRef, $domain, $projectAvailabilityCreate);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->replaceProjectResourceAvailability: ', $e->getMessage(), PHP_EOL;
 }
@@ -684,6 +745,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **projectAvailabilityCreate** | [**\SynergiTech\Iplicit\Model\ProjectAvailabilityCreate[]**](../Model/ProjectAvailabilityCreate.md)|  | [optional] |
 
 ### Return type
@@ -692,7 +754,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -706,7 +768,7 @@ No authorization required
 ## `unlockProject()`
 
 ```php
-unlockProject($projectRef)
+unlockProject($projectRef, $domain)
 ```
 
 Unlock a project
@@ -718,6 +780,9 @@ Unlock a project
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -725,9 +790,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->unlockProject($projectRef);
+    $apiInstance->unlockProject($projectRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->unlockProject: ', $e->getMessage(), PHP_EOL;
 }
@@ -738,6 +804,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -745,7 +812,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -759,7 +826,7 @@ No authorization required
 ## `updateProject()`
 
 ```php
-updateProject($projectRef, $projectUpdate): string
+updateProject($projectRef, $domain, $projectUpdate): string
 ```
 
 Update a project
@@ -771,6 +838,9 @@ Update a project
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -778,10 +848,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProjectApi(
     config: $config
 );
 $projectRef = 'projectRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the project
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $projectUpdate = new \SynergiTech\Iplicit\Model\ProjectUpdate(); // \SynergiTech\Iplicit\Model\ProjectUpdate |
 
 try {
-    $result = $apiInstance->updateProject($projectRef, $projectUpdate);
+    $result = $apiInstance->updateProject($projectRef, $domain, $projectUpdate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->updateProject: ', $e->getMessage(), PHP_EOL;
@@ -793,6 +864,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **projectRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the project | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **projectUpdate** | [**\SynergiTech\Iplicit\Model\ProjectUpdate**](../Model/ProjectUpdate.md)|  | [optional] |
 
 ### Return type
@@ -801,7 +873,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

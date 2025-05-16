@@ -37,7 +37,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `addContactAccountContact()`
 
 ```php
-addContactAccountContact($contactAccountRef, $contactUpdate): string
+addContactAccountContact($contactAccountRef, $domain, $contactUpdate): string
 ```
 
 Add related contacts
@@ -49,6 +49,9 @@ Add related contacts
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -56,10 +59,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $contactUpdate = new \SynergiTech\Iplicit\Model\ContactUpdate(); // \SynergiTech\Iplicit\Model\ContactUpdate |
 
 try {
-    $result = $apiInstance->addContactAccountContact($contactAccountRef, $contactUpdate);
+    $result = $apiInstance->addContactAccountContact($contactAccountRef, $domain, $contactUpdate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->addContactAccountContact: ', $e->getMessage(), PHP_EOL;
@@ -71,6 +75,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **contactUpdate** | [**\SynergiTech\Iplicit\Model\ContactUpdate**](../Model/ContactUpdate.md)|  | [optional] |
 
 ### Return type
@@ -79,7 +84,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -93,7 +98,7 @@ No authorization required
 ## `addContactToContactAccount()`
 
 ```php
-addContactToContactAccount($ca, $cb)
+addContactToContactAccount($ca, $cb, $domain)
 ```
 
 Add an existing contact to a contact account.
@@ -105,6 +110,9 @@ Add an existing contact to a contact account.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -113,9 +121,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
 );
 $ca = 'ca_example'; // string | contact account id or code
 $cb = 'cb_example'; // string | contact id or intRef
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->addContactToContactAccount($ca, $cb);
+    $apiInstance->addContactToContactAccount($ca, $cb, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->addContactToContactAccount: ', $e->getMessage(), PHP_EOL;
 }
@@ -127,6 +136,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **ca** | **string**| contact account id or code | |
 | **cb** | **string**| contact id or intRef | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -134,7 +144,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -148,7 +158,7 @@ No authorization required
 ## `createContactAccount()`
 
 ```php
-createContactAccount($contactAccountCreate): string
+createContactAccount($domain, $contactAccountCreate): string
 ```
 
 Create a contact account
@@ -160,16 +170,20 @@ Create a contact account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $contactAccountCreate = new \SynergiTech\Iplicit\Model\ContactAccountCreate(); // \SynergiTech\Iplicit\Model\ContactAccountCreate |
 
 try {
-    $result = $apiInstance->createContactAccount($contactAccountCreate);
+    $result = $apiInstance->createContactAccount($domain, $contactAccountCreate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->createContactAccount: ', $e->getMessage(), PHP_EOL;
@@ -180,6 +194,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **contactAccountCreate** | [**\SynergiTech\Iplicit\Model\ContactAccountCreate**](../Model/ContactAccountCreate.md)|  | [optional] |
 
 ### Return type
@@ -188,7 +203,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -202,7 +217,7 @@ No authorization required
 ## `deleteContactAccount()`
 
 ```php
-deleteContactAccount($contactAccountRef, $contactRef)
+deleteContactAccount($contactAccountRef, $contactRef, $domain)
 ```
 
 Delete a related contact
@@ -214,6 +229,9 @@ Delete a related contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -222,9 +240,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
 $contactRef = 'contactRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->deleteContactAccount($contactAccountRef, $contactRef);
+    $apiInstance->deleteContactAccount($contactAccountRef, $contactRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->deleteContactAccount: ', $e->getMessage(), PHP_EOL;
 }
@@ -236,6 +255,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
 | **contactRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -243,7 +263,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -257,7 +277,7 @@ No authorization required
 ## `deleteContactFromContactAccount()`
 
 ```php
-deleteContactFromContactAccount($ca, $cb)
+deleteContactFromContactAccount($ca, $cb, $domain)
 ```
 
 Remove an existing contact from a contact account.
@@ -269,6 +289,9 @@ Remove an existing contact from a contact account.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -277,9 +300,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
 );
 $ca = 'ca_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
 $cb = 'cb_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->deleteContactFromContactAccount($ca, $cb);
+    $apiInstance->deleteContactFromContactAccount($ca, $cb, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->deleteContactFromContactAccount: ', $e->getMessage(), PHP_EOL;
 }
@@ -291,6 +315,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **ca** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
 | **cb** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -298,7 +323,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -312,7 +337,7 @@ No authorization required
 ## `getContactAccount()`
 
 ```php
-getContactAccount($contactAccountRef, $include): \SynergiTech\Iplicit\Model\ContactAccountRead
+getContactAccount($contactAccountRef, $domain, $include): \SynergiTech\Iplicit\Model\ContactAccountRead
 ```
 
 Get a contact account
@@ -324,6 +349,9 @@ Get a contact account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -331,10 +359,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $include = 'customer,supplier'; // string | Comma separated list of detail notes to include. Permitted values are `customer`, `supplier`, `resource`, `contact`, `contacts`, `defaultBankDetails`, `allBankDetails`. Default is `customer,supplier`.
 
 try {
-    $result = $apiInstance->getContactAccount($contactAccountRef, $include);
+    $result = $apiInstance->getContactAccount($contactAccountRef, $domain, $include);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->getContactAccount: ', $e->getMessage(), PHP_EOL;
@@ -346,6 +375,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **include** | **string**| Comma separated list of detail notes to include. Permitted values are &#x60;customer&#x60;, &#x60;supplier&#x60;, &#x60;resource&#x60;, &#x60;contact&#x60;, &#x60;contacts&#x60;, &#x60;defaultBankDetails&#x60;, &#x60;allBankDetails&#x60;. Default is &#x60;customer,supplier&#x60;. | [optional] [default to &#39;customer,supplier&#39;] |
 
 ### Return type
@@ -354,7 +384,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -368,7 +398,7 @@ No authorization required
 ## `getContactAccountBankAccounts()`
 
 ```php
-getContactAccountBankAccounts($contactAccountRef): \SynergiTech\Iplicit\Model\ContactBankDetailsRead[]
+getContactAccountBankAccounts($contactAccountRef, $domain): \SynergiTech\Iplicit\Model\ContactBankDetailsRead[]
 ```
 
 Get all the bank details
@@ -380,6 +410,9 @@ Get all the bank details
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -387,9 +420,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getContactAccountBankAccounts($contactAccountRef);
+    $result = $apiInstance->getContactAccountBankAccounts($contactAccountRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->getContactAccountBankAccounts: ', $e->getMessage(), PHP_EOL;
@@ -401,6 +435,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -408,7 +443,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -422,7 +457,7 @@ No authorization required
 ## `getContactAccountCustomerDetails()`
 
 ```php
-getContactAccountCustomerDetails($contactAccountRef): \SynergiTech\Iplicit\Model\ContactCustomerRead
+getContactAccountCustomerDetails($contactAccountRef, $domain): \SynergiTech\Iplicit\Model\ContactCustomerRead
 ```
 
 Get the customer details of the contact account
@@ -434,6 +469,9 @@ Get the customer details of the contact account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -441,9 +479,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getContactAccountCustomerDetails($contactAccountRef);
+    $result = $apiInstance->getContactAccountCustomerDetails($contactAccountRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->getContactAccountCustomerDetails: ', $e->getMessage(), PHP_EOL;
@@ -455,6 +494,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -462,7 +502,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -476,7 +516,7 @@ No authorization required
 ## `getContactAccountDefaultBankAccount()`
 
 ```php
-getContactAccountDefaultBankAccount($contactAccountRef): \SynergiTech\Iplicit\Model\ContactBankDetailsRead
+getContactAccountDefaultBankAccount($contactAccountRef, $domain): \SynergiTech\Iplicit\Model\ContactBankDetailsRead
 ```
 
 Get the default bank details
@@ -488,6 +528,9 @@ Get the default bank details
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -495,9 +538,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getContactAccountDefaultBankAccount($contactAccountRef);
+    $result = $apiInstance->getContactAccountDefaultBankAccount($contactAccountRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->getContactAccountDefaultBankAccount: ', $e->getMessage(), PHP_EOL;
@@ -509,6 +553,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -516,7 +561,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -530,7 +575,7 @@ No authorization required
 ## `getContactAccountMainContact()`
 
 ```php
-getContactAccountMainContact($contactAccountRef): \SynergiTech\Iplicit\Model\ContactRead
+getContactAccountMainContact($contactAccountRef, $domain): \SynergiTech\Iplicit\Model\ContactRead
 ```
 
 Get the main contact details of the contact account
@@ -542,6 +587,9 @@ Get the main contact details of the contact account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -549,9 +597,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getContactAccountMainContact($contactAccountRef);
+    $result = $apiInstance->getContactAccountMainContact($contactAccountRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->getContactAccountMainContact: ', $e->getMessage(), PHP_EOL;
@@ -563,6 +612,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -570,7 +620,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -584,7 +634,7 @@ No authorization required
 ## `getContactAccountRelatedContact()`
 
 ```php
-getContactAccountRelatedContact($contactAccountRef, $contactRef): \SynergiTech\Iplicit\Model\ContactRead
+getContactAccountRelatedContact($contactAccountRef, $contactRef, $domain): \SynergiTech\Iplicit\Model\ContactRead
 ```
 
 Get an existing related contact
@@ -596,6 +646,9 @@ Get an existing related contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -604,9 +657,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
 $contactRef = 'contactRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getContactAccountRelatedContact($contactAccountRef, $contactRef);
+    $result = $apiInstance->getContactAccountRelatedContact($contactAccountRef, $contactRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->getContactAccountRelatedContact: ', $e->getMessage(), PHP_EOL;
@@ -619,6 +673,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
 | **contactRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -626,7 +681,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -640,7 +695,7 @@ No authorization required
 ## `getContactAccountRelatedContacts()`
 
 ```php
-getContactAccountRelatedContacts($contactAccountRef): \SynergiTech\Iplicit\Model\ContactRead[]
+getContactAccountRelatedContacts($contactAccountRef, $domain): \SynergiTech\Iplicit\Model\ContactRead[]
 ```
 
 Get the related contacts
@@ -652,6 +707,9 @@ Get the related contacts
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -659,9 +717,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getContactAccountRelatedContacts($contactAccountRef);
+    $result = $apiInstance->getContactAccountRelatedContacts($contactAccountRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->getContactAccountRelatedContacts: ', $e->getMessage(), PHP_EOL;
@@ -673,6 +732,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -680,7 +740,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -694,7 +754,7 @@ No authorization required
 ## `getContactAccountResource()`
 
 ```php
-getContactAccountResource($contactAccountRef): \SynergiTech\Iplicit\Model\ContactResourceRead
+getContactAccountResource($contactAccountRef, $domain): \SynergiTech\Iplicit\Model\ContactResourceRead
 ```
 
 Get the resource details of the contact account
@@ -706,6 +766,9 @@ Get the resource details of the contact account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -713,9 +776,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getContactAccountResource($contactAccountRef);
+    $result = $apiInstance->getContactAccountResource($contactAccountRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->getContactAccountResource: ', $e->getMessage(), PHP_EOL;
@@ -727,6 +791,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -734,7 +799,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -748,7 +813,7 @@ No authorization required
 ## `getContactAccountSupplierDefaults()`
 
 ```php
-getContactAccountSupplierDefaults($contactAccountRef): \SynergiTech\Iplicit\Model\ContactSupplierRead
+getContactAccountSupplierDefaults($contactAccountRef, $domain): \SynergiTech\Iplicit\Model\ContactSupplierRead
 ```
 
 Get the supplier details of the contact account
@@ -760,6 +825,9 @@ Get the supplier details of the contact account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -767,9 +835,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getContactAccountSupplierDefaults($contactAccountRef);
+    $result = $apiInstance->getContactAccountSupplierDefaults($contactAccountRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->getContactAccountSupplierDefaults: ', $e->getMessage(), PHP_EOL;
@@ -781,6 +850,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -788,7 +858,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -802,7 +872,7 @@ No authorization required
 ## `getContactAccounts()`
 
 ```php
-getContactAccounts($code, $intRef, $descriptionContains, $lastModifiedFrom, $lastModifiedTo, $isCustomer, $isSupplier, $isResource, $include, $take, $skip): \SynergiTech\Iplicit\Model\ContactAccountRead[]
+getContactAccounts($domain, $code, $intRef, $descriptionContains, $lastModifiedFrom, $lastModifiedTo, $isCustomer, $isSupplier, $isResource, $include, $take, $skip): \SynergiTech\Iplicit\Model\ContactAccountRead[]
 ```
 
 Gets a list of contact accounts with a search filter
@@ -814,17 +884,21 @@ Gets a list of contact accounts with a search filter
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $code = 'code_example'; // string | Code. <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">Learn more</a>
 $intRef = 'intRef_example'; // string | Optional interface reference. If provided, it must be unique. <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">Learn more</a>
 $descriptionContains = 'descriptionContains_example'; // string | Description contains
-$lastModifiedFrom = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Last modified from (UTC)
-$lastModifiedTo = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Last modified until (UTC)
+$lastModifiedFrom = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Last modified from (UTC)
+$lastModifiedTo = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Last modified until (UTC)
 $isCustomer = True; // bool | Include/exclude customers
 $isSupplier = True; // bool | Include/exclude suppliers
 $isResource = True; // bool | Include/exclude resources
@@ -833,7 +907,7 @@ $take = 100; // int | The number of records to return
 $skip = 0; // int | The number of records to skip
 
 try {
-    $result = $apiInstance->getContactAccounts($code, $intRef, $descriptionContains, $lastModifiedFrom, $lastModifiedTo, $isCustomer, $isSupplier, $isResource, $include, $take, $skip);
+    $result = $apiInstance->getContactAccounts($domain, $code, $intRef, $descriptionContains, $lastModifiedFrom, $lastModifiedTo, $isCustomer, $isSupplier, $isResource, $include, $take, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->getContactAccounts: ', $e->getMessage(), PHP_EOL;
@@ -844,6 +918,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **code** | **string**| Code. &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;Learn more&lt;/a&gt; | [optional] |
 | **intRef** | **string**| Optional interface reference. If provided, it must be unique. &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;Learn more&lt;/a&gt; | [optional] |
 | **descriptionContains** | **string**| Description contains | [optional] |
@@ -862,7 +937,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -876,7 +951,7 @@ No authorization required
 ## `lockContactAccount()`
 
 ```php
-lockContactAccount($contactAccountRef)
+lockContactAccount($contactAccountRef, $domain)
 ```
 
 
@@ -888,6 +963,9 @@ lockContactAccount($contactAccountRef)
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -895,9 +973,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->lockContactAccount($contactAccountRef);
+    $apiInstance->lockContactAccount($contactAccountRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->lockContactAccount: ', $e->getMessage(), PHP_EOL;
 }
@@ -908,6 +987,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**|  | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -915,7 +995,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -929,7 +1009,7 @@ No authorization required
 ## `lockContactAccountResource()`
 
 ```php
-lockContactAccountResource($contactAccountRef)
+lockContactAccountResource($contactAccountRef, $domain)
 ```
 
 Lock the contact account resource
@@ -941,6 +1021,9 @@ Lock the contact account resource
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -948,9 +1031,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->lockContactAccountResource($contactAccountRef);
+    $apiInstance->lockContactAccountResource($contactAccountRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->lockContactAccountResource: ', $e->getMessage(), PHP_EOL;
 }
@@ -961,6 +1045,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -968,7 +1053,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -982,7 +1067,7 @@ No authorization required
 ## `lockCustomer()`
 
 ```php
-lockCustomer($contactAccountRef)
+lockCustomer($contactAccountRef, $domain)
 ```
 
 Lock the customer
@@ -994,6 +1079,9 @@ Lock the customer
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1001,9 +1089,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->lockCustomer($contactAccountRef);
+    $apiInstance->lockCustomer($contactAccountRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->lockCustomer: ', $e->getMessage(), PHP_EOL;
 }
@@ -1014,6 +1103,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -1021,7 +1111,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1035,7 +1125,7 @@ No authorization required
 ## `lockSupplier()`
 
 ```php
-lockSupplier($contactAccountRef)
+lockSupplier($contactAccountRef, $domain)
 ```
 
 Lock the supplier
@@ -1047,6 +1137,9 @@ Lock the supplier
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1054,9 +1147,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->lockSupplier($contactAccountRef);
+    $apiInstance->lockSupplier($contactAccountRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->lockSupplier: ', $e->getMessage(), PHP_EOL;
 }
@@ -1067,6 +1161,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -1074,7 +1169,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1088,7 +1183,7 @@ No authorization required
 ## `unlockContactAccount()`
 
 ```php
-unlockContactAccount($contactAccountRef)
+unlockContactAccount($contactAccountRef, $domain)
 ```
 
 Unlock the contact account
@@ -1100,6 +1195,9 @@ Unlock the contact account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1107,9 +1205,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->unlockContactAccount($contactAccountRef);
+    $apiInstance->unlockContactAccount($contactAccountRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->unlockContactAccount: ', $e->getMessage(), PHP_EOL;
 }
@@ -1120,6 +1219,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -1127,7 +1227,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1141,7 +1241,7 @@ No authorization required
 ## `unlockContactAccountResource()`
 
 ```php
-unlockContactAccountResource($contactAccountRef)
+unlockContactAccountResource($contactAccountRef, $domain)
 ```
 
 Unlock the contact account resource
@@ -1153,6 +1253,9 @@ Unlock the contact account resource
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1160,9 +1263,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->unlockContactAccountResource($contactAccountRef);
+    $apiInstance->unlockContactAccountResource($contactAccountRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->unlockContactAccountResource: ', $e->getMessage(), PHP_EOL;
 }
@@ -1173,6 +1277,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -1180,7 +1285,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1194,7 +1299,7 @@ No authorization required
 ## `unlockCustomer()`
 
 ```php
-unlockCustomer($contactAccountRef)
+unlockCustomer($contactAccountRef, $domain)
 ```
 
 Unlock the customer
@@ -1206,6 +1311,9 @@ Unlock the customer
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1213,9 +1321,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->unlockCustomer($contactAccountRef);
+    $apiInstance->unlockCustomer($contactAccountRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->unlockCustomer: ', $e->getMessage(), PHP_EOL;
 }
@@ -1226,6 +1335,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -1233,7 +1343,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1247,7 +1357,7 @@ No authorization required
 ## `unlockSupplier()`
 
 ```php
-unlockSupplier($contactAccountRef)
+unlockSupplier($contactAccountRef, $domain)
 ```
 
 Unlock the supplier
@@ -1259,6 +1369,9 @@ Unlock the supplier
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1266,9 +1379,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->unlockSupplier($contactAccountRef);
+    $apiInstance->unlockSupplier($contactAccountRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->unlockSupplier: ', $e->getMessage(), PHP_EOL;
 }
@@ -1279,6 +1393,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -1286,7 +1401,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1300,7 +1415,7 @@ No authorization required
 ## `updateContactAccount()`
 
 ```php
-updateContactAccount($contactAccountRef, $contactAccountUpdate): string
+updateContactAccount($contactAccountRef, $domain, $contactAccountUpdate): string
 ```
 
 Update a contact account
@@ -1312,6 +1427,9 @@ Update a contact account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1319,10 +1437,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $contactAccountUpdate = new \SynergiTech\Iplicit\Model\ContactAccountUpdate(); // \SynergiTech\Iplicit\Model\ContactAccountUpdate |
 
 try {
-    $result = $apiInstance->updateContactAccount($contactAccountRef, $contactAccountUpdate);
+    $result = $apiInstance->updateContactAccount($contactAccountRef, $domain, $contactAccountUpdate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->updateContactAccount: ', $e->getMessage(), PHP_EOL;
@@ -1334,6 +1453,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **contactAccountUpdate** | [**\SynergiTech\Iplicit\Model\ContactAccountUpdate**](../Model/ContactAccountUpdate.md)|  | [optional] |
 
 ### Return type
@@ -1342,7 +1462,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1356,7 +1476,7 @@ No authorization required
 ## `updateContactAccountBankDetails()`
 
 ```php
-updateContactAccountBankDetails($contactAccountRef, $contactBankDetailsUpdateable)
+updateContactAccountBankDetails($contactAccountRef, $domain, $contactBankDetailsUpdateable)
 ```
 
 Replace bank details
@@ -1368,6 +1488,9 @@ Replace bank details
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1375,10 +1498,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $contactBankDetailsUpdateable = new \SynergiTech\Iplicit\Model\ContactBankDetailsUpdateable(); // \SynergiTech\Iplicit\Model\ContactBankDetailsUpdateable |
 
 try {
-    $apiInstance->updateContactAccountBankDetails($contactAccountRef, $contactBankDetailsUpdateable);
+    $apiInstance->updateContactAccountBankDetails($contactAccountRef, $domain, $contactBankDetailsUpdateable);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->updateContactAccountBankDetails: ', $e->getMessage(), PHP_EOL;
 }
@@ -1389,6 +1513,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **contactBankDetailsUpdateable** | [**\SynergiTech\Iplicit\Model\ContactBankDetailsUpdateable**](../Model/ContactBankDetailsUpdateable.md)|  | [optional] |
 
 ### Return type
@@ -1397,7 +1522,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1411,7 +1536,7 @@ No authorization required
 ## `updateContactAccountContact()`
 
 ```php
-updateContactAccountContact($contactAccountRef, $contactRef, $contactUpdate)
+updateContactAccountContact($contactAccountRef, $contactRef, $domain, $contactUpdate)
 ```
 
 Update an existing related contact
@@ -1423,6 +1548,9 @@ Update an existing related contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1431,10 +1559,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
 $contactRef = 'contactRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $contactUpdate = new \SynergiTech\Iplicit\Model\ContactUpdate(); // \SynergiTech\Iplicit\Model\ContactUpdate |
 
 try {
-    $apiInstance->updateContactAccountContact($contactAccountRef, $contactRef, $contactUpdate);
+    $apiInstance->updateContactAccountContact($contactAccountRef, $contactRef, $domain, $contactUpdate);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->updateContactAccountContact: ', $e->getMessage(), PHP_EOL;
 }
@@ -1446,6 +1575,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
 | **contactRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **contactUpdate** | [**\SynergiTech\Iplicit\Model\ContactUpdate**](../Model/ContactUpdate.md)|  | [optional] |
 
 ### Return type
@@ -1454,7 +1584,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1468,7 +1598,7 @@ No authorization required
 ## `updateContactAccountMainContact()`
 
 ```php
-updateContactAccountMainContact($contactAccountRef, $contactUpdate)
+updateContactAccountMainContact($contactAccountRef, $domain, $contactUpdate)
 ```
 
 Update the main contact details
@@ -1480,6 +1610,9 @@ Update the main contact details
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1487,10 +1620,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $contactUpdate = new \SynergiTech\Iplicit\Model\ContactUpdate(); // \SynergiTech\Iplicit\Model\ContactUpdate |
 
 try {
-    $apiInstance->updateContactAccountMainContact($contactAccountRef, $contactUpdate);
+    $apiInstance->updateContactAccountMainContact($contactAccountRef, $domain, $contactUpdate);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->updateContactAccountMainContact: ', $e->getMessage(), PHP_EOL;
 }
@@ -1501,6 +1635,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **contactUpdate** | [**\SynergiTech\Iplicit\Model\ContactUpdate**](../Model/ContactUpdate.md)|  | [optional] |
 
 ### Return type
@@ -1509,7 +1644,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1523,7 +1658,7 @@ No authorization required
 ## `updateContactAccountRelatedContacts()`
 
 ```php
-updateContactAccountRelatedContacts($contactAccountRef, $contactUpdate)
+updateContactAccountRelatedContacts($contactAccountRef, $domain, $contactUpdate)
 ```
 
 Update existing contacts.                Existing contacts are matched to request contacts by ID, IntRef or Description and updated.              Existing contacts that do not match any request contact are left unchanged.              Request contacts that do not match any existing contact are added.
@@ -1535,6 +1670,9 @@ Update existing contacts.                Existing contacts are matched to reques
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1542,10 +1680,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactAccountApi(
     config: $config
 );
 $contactAccountRef = 'contactAccountRef_example'; // string | Id, code or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact account
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $contactUpdate = array(new \SynergiTech\Iplicit\Model\ContactUpdate()); // \SynergiTech\Iplicit\Model\ContactUpdate[] |
 
 try {
-    $apiInstance->updateContactAccountRelatedContacts($contactAccountRef, $contactUpdate);
+    $apiInstance->updateContactAccountRelatedContacts($contactAccountRef, $domain, $contactUpdate);
 } catch (Exception $e) {
     echo 'Exception when calling ContactAccountApi->updateContactAccountRelatedContacts: ', $e->getMessage(), PHP_EOL;
 }
@@ -1556,6 +1695,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contactAccountRef** | **string**| Id, code or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact account | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **contactUpdate** | [**\SynergiTech\Iplicit\Model\ContactUpdate[]**](../Model/ContactUpdate.md)|  | [optional] |
 
 ### Return type
@@ -1564,7 +1704,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

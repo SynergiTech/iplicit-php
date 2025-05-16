@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **ext** | **array<string,mixed>** | The product custom fields | [optional]
 **purchase** | [**\SynergiTech\Iplicit\Model\ProductPurchaseUpdate**](ProductPurchaseUpdate.md) |  | [optional]
 **sale** | [**\SynergiTech\Iplicit\Model\ProductSaleUpdate**](ProductSaleUpdate.md) |  | [optional]
+**stock** | [**\SynergiTech\Iplicit\Model\ProductStockUpdate**](ProductStockUpdate.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

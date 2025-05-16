@@ -12,7 +12,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `runEnquiry()`
 
 ```php
-runEnquiry($id, $body): mixed[]
+runEnquiry($id, $domain, $body): mixed[]
 ```
 
 Run an enquiry that returns a list
@@ -24,6 +24,9 @@ Run an enquiry that returns a list
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\EnquiryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -31,10 +34,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\EnquiryApi(
     config: $config
 );
 $id = 'id_example'; // string | Id of the enquiry
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $body = NULL; // mixed
 
 try {
-    $result = $apiInstance->runEnquiry($id, $body);
+    $result = $apiInstance->runEnquiry($id, $domain, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EnquiryApi->runEnquiry: ', $e->getMessage(), PHP_EOL;
@@ -46,6 +50,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Id of the enquiry | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **body** | **mixed**|  | [optional] |
 
 ### Return type
@@ -54,7 +59,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -68,7 +73,7 @@ No authorization required
 ## `runEnquiryToList()`
 
 ```php
-runEnquiryToList($id, $body): mixed[]
+runEnquiryToList($id, $domain, $body): mixed[]
 ```
 
 Run an enquiry that returns a list
@@ -80,6 +85,9 @@ Run an enquiry that returns a list
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\EnquiryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -87,10 +95,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\EnquiryApi(
     config: $config
 );
 $id = 'id_example'; // string | Id of the enquiry
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $body = NULL; // mixed
 
 try {
-    $result = $apiInstance->runEnquiryToList($id, $body);
+    $result = $apiInstance->runEnquiryToList($id, $domain, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EnquiryApi->runEnquiryToList: ', $e->getMessage(), PHP_EOL;
@@ -102,6 +111,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Id of the enquiry | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **body** | **mixed**|  | [optional] |
 
 ### Return type
@@ -110,7 +120,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -124,7 +134,7 @@ No authorization required
 ## `runEnquiryToTable()`
 
 ```php
-runEnquiryToTable($id, $body): \SynergiTech\Iplicit\Model\Table
+runEnquiryToTable($id, $domain, $body): \SynergiTech\Iplicit\Model\Table
 ```
 
 Run an enquiry that returns a table
@@ -136,6 +146,9 @@ Run an enquiry that returns a table
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\EnquiryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -143,10 +156,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\EnquiryApi(
     config: $config
 );
 $id = 'id_example'; // string | Id of the enquiry
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $body = NULL; // mixed
 
 try {
-    $result = $apiInstance->runEnquiryToTable($id, $body);
+    $result = $apiInstance->runEnquiryToTable($id, $domain, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EnquiryApi->runEnquiryToTable: ', $e->getMessage(), PHP_EOL;
@@ -158,6 +172,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Id of the enquiry | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **body** | **mixed**|  | [optional] |
 
 ### Return type
@@ -166,7 +181,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

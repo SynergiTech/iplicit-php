@@ -22,7 +22,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `abandonBatchPayment()`
 
 ```php
-abandonBatchPayment($idOrBatchNo, $batchPaymentAbandon): string
+abandonBatchPayment($idOrBatchNo, $domain, $batchPaymentAbandon): string
 ```
 
 Abandon a batch payment
@@ -34,6 +34,9 @@ Abandon a batch payment
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -41,10 +44,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     config: $config
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch payment id or batch number
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $batchPaymentAbandon = new \SynergiTech\Iplicit\Model\BatchPaymentAbandon(); // \SynergiTech\Iplicit\Model\BatchPaymentAbandon
 
 try {
-    $result = $apiInstance->abandonBatchPayment($idOrBatchNo, $batchPaymentAbandon);
+    $result = $apiInstance->abandonBatchPayment($idOrBatchNo, $domain, $batchPaymentAbandon);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->abandonBatchPayment: ', $e->getMessage(), PHP_EOL;
@@ -56,6 +60,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch payment id or batch number | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **batchPaymentAbandon** | [**\SynergiTech\Iplicit\Model\BatchPaymentAbandon**](../Model/BatchPaymentAbandon.md)|  | [optional] |
 
 ### Return type
@@ -64,7 +69,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -78,7 +83,7 @@ No authorization required
 ## `addBatchPaymentAllocations()`
 
 ```php
-addBatchPaymentAllocations($idOrBatchNo, $docAllocationCreate)
+addBatchPaymentAllocations($idOrBatchNo, $domain, $docAllocationCreate)
 ```
 
 Add allocations to the batch payment
@@ -90,6 +95,9 @@ Add allocations to the batch payment
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -97,10 +105,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     config: $config
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch payment id or batch number
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $docAllocationCreate = array(new \SynergiTech\Iplicit\Model\DocAllocationCreate()); // \SynergiTech\Iplicit\Model\DocAllocationCreate[] |
 
 try {
-    $apiInstance->addBatchPaymentAllocations($idOrBatchNo, $docAllocationCreate);
+    $apiInstance->addBatchPaymentAllocations($idOrBatchNo, $domain, $docAllocationCreate);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->addBatchPaymentAllocations: ', $e->getMessage(), PHP_EOL;
 }
@@ -111,6 +120,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch payment id or batch number | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **docAllocationCreate** | [**\SynergiTech\Iplicit\Model\DocAllocationCreate[]**](../Model/DocAllocationCreate.md)|  | [optional] |
 
 ### Return type
@@ -119,7 +129,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -133,7 +143,7 @@ No authorization required
 ## `amendBatchPayment()`
 
 ```php
-amendBatchPayment($idOrBatchNo): string
+amendBatchPayment($idOrBatchNo, $domain): string
 ```
 
 Set an approved batch payment back to draft for amending
@@ -145,6 +155,9 @@ Set an approved batch payment back to draft for amending
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -152,9 +165,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     config: $config
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch payment id or batch number
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->amendBatchPayment($idOrBatchNo);
+    $result = $apiInstance->amendBatchPayment($idOrBatchNo, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->amendBatchPayment: ', $e->getMessage(), PHP_EOL;
@@ -166,6 +180,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch payment id or batch number | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -173,7 +188,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -187,7 +202,7 @@ No authorization required
 ## `createBatchPayment()`
 
 ```php
-createBatchPayment($batchPaymentCreate): string
+createBatchPayment($domain, $batchPaymentCreate): string
 ```
 
 Create a batch payment
@@ -199,16 +214,20 @@ Create a batch payment
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $batchPaymentCreate = new \SynergiTech\Iplicit\Model\BatchPaymentCreate(); // \SynergiTech\Iplicit\Model\BatchPaymentCreate |
 
 try {
-    $result = $apiInstance->createBatchPayment($batchPaymentCreate);
+    $result = $apiInstance->createBatchPayment($domain, $batchPaymentCreate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->createBatchPayment: ', $e->getMessage(), PHP_EOL;
@@ -219,6 +238,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **batchPaymentCreate** | [**\SynergiTech\Iplicit\Model\BatchPaymentCreate**](../Model/BatchPaymentCreate.md)|  | [optional] |
 
 ### Return type
@@ -227,7 +247,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -241,7 +261,7 @@ No authorization required
 ## `deleteBatchPaymentAllocation()`
 
 ```php
-deleteBatchPaymentAllocation($idOrBatchNo, $allocationId)
+deleteBatchPaymentAllocation($idOrBatchNo, $allocationId, $domain)
 ```
 
 Delete an allocation in the batch payment
@@ -253,6 +273,9 @@ Delete an allocation in the batch payment
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -261,9 +284,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch payment id or batch number
 $allocationId = 'allocationId_example'; // string | Batch payment allocation id
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->deleteBatchPaymentAllocation($idOrBatchNo, $allocationId);
+    $apiInstance->deleteBatchPaymentAllocation($idOrBatchNo, $allocationId, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->deleteBatchPaymentAllocation: ', $e->getMessage(), PHP_EOL;
 }
@@ -275,6 +299,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch payment id or batch number | |
 | **allocationId** | **string**| Batch payment allocation id | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -282,7 +307,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -296,7 +321,7 @@ No authorization required
 ## `getBatchPayment()`
 
 ```php
-getBatchPayment($idOrBatchNo): \SynergiTech\Iplicit\Model\BatchPaymentDetail
+getBatchPayment($idOrBatchNo, $domain): \SynergiTech\Iplicit\Model\BatchPaymentDetail
 ```
 
 Get a batch payment by id or by batch number.
@@ -308,6 +333,9 @@ Get a batch payment by id or by batch number.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -315,9 +343,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     config: $config
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch payment id or batch number
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getBatchPayment($idOrBatchNo);
+    $result = $apiInstance->getBatchPayment($idOrBatchNo, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->getBatchPayment: ', $e->getMessage(), PHP_EOL;
@@ -329,6 +358,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch payment id or batch number | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -336,7 +366,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -350,7 +380,7 @@ No authorization required
 ## `getBatchPayments()`
 
 ```php
-getBatchPayments($batchNo, $batchPaymentType, $legalEntity, $bankAccountId, $description, $descriptionContains, $paymentDateFrom, $paymentDateTo, $lastModifiedFrom, $lastModifiedTo, $lastModifiedBy, $isDraft, $isPosted, $isApproved, $isProcessed, $take, $skip): \SynergiTech\Iplicit\Model\BatchPaymentSummary[]
+getBatchPayments($domain, $batchNo, $batchPaymentType, $legalEntity, $bankAccountId, $description, $descriptionContains, $paymentDateFrom, $paymentDateTo, $lastModifiedFrom, $lastModifiedTo, $lastModifiedBy, $isDraft, $isPosted, $isApproved, $isProcessed, $take, $skip): \SynergiTech\Iplicit\Model\BatchPaymentSummary[]
 ```
 
 Get batch payments with a search filter
@@ -362,22 +392,26 @@ Get batch payments with a search filter
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $batchNo = 'batchNo_example'; // string | Filter on the batch payment number
 $batchPaymentType = 'batchPaymentType_example'; // string | Filter on the batch payment type
 $legalEntity = 'legalEntity_example'; // string | Filter on the legal entity
 $bankAccountId = 'bankAccountId_example'; // string | Filter on the bank account id
 $description = 'description_example'; // string | Filter on the description
 $descriptionContains = 'descriptionContains_example'; // string | Filter on the description that contains
-$paymentDateFrom = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The batch payment date from
-$paymentDateTo = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter on the batch payment date to
-$lastModifiedFrom = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter on the batch payment last modified from date
-$lastModifiedTo = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter on the batch payment last modified to date
+$paymentDateFrom = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | The batch payment date from
+$paymentDateTo = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter on the batch payment date to
+$lastModifiedFrom = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter on the batch payment last modified from date
+$lastModifiedTo = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Filter on the batch payment last modified to date
 $lastModifiedBy = 'lastModifiedBy_example'; // string | The user that last modified this item. See `UserAccount` catalog.
 $isDraft = True; // bool | Filter on a flag indicating whether the batch is in draft
 $isPosted = True; // bool | Filter on a flag indicating whether the batch is posted
@@ -387,7 +421,7 @@ $take = 100; // int | The number of records to return
 $skip = 0; // int | The number of records to skip
 
 try {
-    $result = $apiInstance->getBatchPayments($batchNo, $batchPaymentType, $legalEntity, $bankAccountId, $description, $descriptionContains, $paymentDateFrom, $paymentDateTo, $lastModifiedFrom, $lastModifiedTo, $lastModifiedBy, $isDraft, $isPosted, $isApproved, $isProcessed, $take, $skip);
+    $result = $apiInstance->getBatchPayments($domain, $batchNo, $batchPaymentType, $legalEntity, $bankAccountId, $description, $descriptionContains, $paymentDateFrom, $paymentDateTo, $lastModifiedFrom, $lastModifiedTo, $lastModifiedBy, $isDraft, $isPosted, $isApproved, $isProcessed, $take, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->getBatchPayments: ', $e->getMessage(), PHP_EOL;
@@ -398,6 +432,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **batchNo** | **string**| Filter on the batch payment number | [optional] |
 | **batchPaymentType** | **string**| Filter on the batch payment type | [optional] |
 | **legalEntity** | **string**| Filter on the legal entity | [optional] |
@@ -422,7 +457,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -436,7 +471,7 @@ No authorization required
 ## `postBatchPayment()`
 
 ```php
-postBatchPayment($idOrBatchNo): string
+postBatchPayment($idOrBatchNo, $domain): string
 ```
 
 Post a batch payment
@@ -448,6 +483,9 @@ Post a batch payment
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -455,9 +493,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     config: $config
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch payment id or batch number
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->postBatchPayment($idOrBatchNo);
+    $result = $apiInstance->postBatchPayment($idOrBatchNo, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->postBatchPayment: ', $e->getMessage(), PHP_EOL;
@@ -469,6 +508,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch payment id or batch number | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -476,7 +516,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -490,7 +530,7 @@ No authorization required
 ## `processBatchPayment()`
 
 ```php
-processBatchPayment($idOrBatchNo): string
+processBatchPayment($idOrBatchNo, $domain): string
 ```
 
 Process a batch payment
@@ -502,6 +542,9 @@ Process a batch payment
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -509,9 +552,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     config: $config
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch payment id or batch number
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->processBatchPayment($idOrBatchNo);
+    $result = $apiInstance->processBatchPayment($idOrBatchNo, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->processBatchPayment: ', $e->getMessage(), PHP_EOL;
@@ -523,6 +567,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch payment id or batch number | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -530,7 +575,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -544,7 +589,7 @@ No authorization required
 ## `replaceBatchPaymentAllocations()`
 
 ```php
-replaceBatchPaymentAllocations($idOrBatchNo, $docAllocationCreate)
+replaceBatchPaymentAllocations($idOrBatchNo, $domain, $docAllocationCreate)
 ```
 
 Replaces all allocations in the batch payment
@@ -556,6 +601,9 @@ Replaces all allocations in the batch payment
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -563,10 +611,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     config: $config
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch payment id or batch number
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $docAllocationCreate = array(new \SynergiTech\Iplicit\Model\DocAllocationCreate()); // \SynergiTech\Iplicit\Model\DocAllocationCreate[] |
 
 try {
-    $apiInstance->replaceBatchPaymentAllocations($idOrBatchNo, $docAllocationCreate);
+    $apiInstance->replaceBatchPaymentAllocations($idOrBatchNo, $domain, $docAllocationCreate);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->replaceBatchPaymentAllocations: ', $e->getMessage(), PHP_EOL;
 }
@@ -577,6 +626,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch payment id or batch number | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **docAllocationCreate** | [**\SynergiTech\Iplicit\Model\DocAllocationCreate[]**](../Model/DocAllocationCreate.md)|  | [optional] |
 
 ### Return type
@@ -585,7 +635,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -599,7 +649,7 @@ No authorization required
 ## `submitBatchPayment()`
 
 ```php
-submitBatchPayment($idOrBatchNo): string
+submitBatchPayment($idOrBatchNo, $domain): string
 ```
 
 Submit a batch payment
@@ -611,6 +661,9 @@ Submit a batch payment
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -618,9 +671,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     config: $config
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch payment id or batch number
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->submitBatchPayment($idOrBatchNo);
+    $result = $apiInstance->submitBatchPayment($idOrBatchNo, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->submitBatchPayment: ', $e->getMessage(), PHP_EOL;
@@ -632,6 +686,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch payment id or batch number | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -639,7 +694,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -653,7 +708,7 @@ No authorization required
 ## `unpostBatchPayment()`
 
 ```php
-unpostBatchPayment($idOrBatchNo): string
+unpostBatchPayment($idOrBatchNo, $domain): string
 ```
 
 Unpost a batch payment
@@ -665,6 +720,9 @@ Unpost a batch payment
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -672,9 +730,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     config: $config
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch payment id or batch number
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->unpostBatchPayment($idOrBatchNo);
+    $result = $apiInstance->unpostBatchPayment($idOrBatchNo, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->unpostBatchPayment: ', $e->getMessage(), PHP_EOL;
@@ -686,6 +745,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch payment id or batch number | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -693,7 +753,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -707,7 +767,7 @@ No authorization required
 ## `updateBatchPayment()`
 
 ```php
-updateBatchPayment($batchPaymentId, $batchPaymentUpdate)
+updateBatchPayment($batchPaymentId, $domain, $batchPaymentUpdate)
 ```
 
 Update a batch payment
@@ -719,6 +779,9 @@ Update a batch payment
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -726,10 +789,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\BatchPaymentApi(
     config: $config
 );
 $batchPaymentId = 'batchPaymentId_example'; // string | Batch payment id
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $batchPaymentUpdate = new \SynergiTech\Iplicit\Model\BatchPaymentUpdate(); // \SynergiTech\Iplicit\Model\BatchPaymentUpdate |
 
 try {
-    $apiInstance->updateBatchPayment($batchPaymentId, $batchPaymentUpdate);
+    $apiInstance->updateBatchPayment($batchPaymentId, $domain, $batchPaymentUpdate);
 } catch (Exception $e) {
     echo 'Exception when calling BatchPaymentApi->updateBatchPayment: ', $e->getMessage(), PHP_EOL;
 }
@@ -740,6 +804,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **batchPaymentId** | **string**| Batch payment id | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **batchPaymentUpdate** | [**\SynergiTech\Iplicit\Model\BatchPaymentUpdate**](../Model/BatchPaymentUpdate.md)|  | [optional] |
 
 ### Return type
@@ -748,7 +813,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

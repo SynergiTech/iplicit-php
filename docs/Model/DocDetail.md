@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 **currencyRate** | **float** | The document detail currency rate | [optional]
 **hasAttachments** | **bool** | Flag indicating whether there are any documents attached | [optional]
 **hasNotes** | **bool** | Flag indicating whether there are any notes attached | [optional]
-**isTaxAdjustment** | **bool** | The document detail is tax adjustment flaa | [optional]
+**isTaxAdjustment** | **bool** | The document detail is tax adjustment flag | [optional]
 **isReverseCharge** | **bool** | The document detail is reverse charge flag | [optional]
 **taxBandId** | **string** | The document detail tax band id | [optional]
 **isResale** | **bool** | The document detail is resale flag | [optional]

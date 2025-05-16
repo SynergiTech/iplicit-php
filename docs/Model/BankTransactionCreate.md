@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bankAccountRef** | **string** | The bank transaction bank acccount reference |
+**bankAccountRef** | **string** | The bank transaction bank account reference |
 **description** | **string** | The bank transaction description |
 **bankDate** | **\DateTime** | The bank transaction bank date |
 **depositAmount** | **float** | The bank transaction deposit amount | [optional]

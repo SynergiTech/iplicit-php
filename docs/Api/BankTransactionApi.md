@@ -15,7 +15,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `createBankTransaction()`
 
 ```php
-createBankTransaction($bankTransactionCreate): string
+createBankTransaction($domain, $bankTransactionCreate): string
 ```
 
 Create a bank transaction
@@ -27,16 +27,20 @@ Create a bank transaction
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $bankTransactionCreate = new \SynergiTech\Iplicit\Model\BankTransactionCreate(); // \SynergiTech\Iplicit\Model\BankTransactionCreate |
 
 try {
-    $result = $apiInstance->createBankTransaction($bankTransactionCreate);
+    $result = $apiInstance->createBankTransaction($domain, $bankTransactionCreate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BankTransactionApi->createBankTransaction: ', $e->getMessage(), PHP_EOL;
@@ -47,6 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **bankTransactionCreate** | [**\SynergiTech\Iplicit\Model\BankTransactionCreate**](../Model/BankTransactionCreate.md)|  | [optional] |
 
 ### Return type
@@ -55,7 +60,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -69,7 +74,7 @@ No authorization required
 ## `deleteBankTransaction()`
 
 ```php
-deleteBankTransaction($bankTransactionId): string
+deleteBankTransaction($bankTransactionId, $domain): string
 ```
 
 Delete a bank transaction
@@ -81,6 +86,9 @@ Delete a bank transaction
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -88,9 +96,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     config: $config
 );
 $bankTransactionId = 'bankTransactionId_example'; // string | Id of the bank transaction
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->deleteBankTransaction($bankTransactionId);
+    $result = $apiInstance->deleteBankTransaction($bankTransactionId, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BankTransactionApi->deleteBankTransaction: ', $e->getMessage(), PHP_EOL;
@@ -102,6 +111,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bankTransactionId** | **string**| Id of the bank transaction | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -109,7 +119,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -123,7 +133,7 @@ No authorization required
 ## `getBankTransaction()`
 
 ```php
-getBankTransaction($bankTransactionId): \SynergiTech\Iplicit\Model\BankTransactionRead
+getBankTransaction($bankTransactionId, $domain): \SynergiTech\Iplicit\Model\BankTransactionRead
 ```
 
 Get a bank transaction
@@ -135,6 +145,9 @@ Get a bank transaction
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -142,9 +155,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     config: $config
 );
 $bankTransactionId = 'bankTransactionId_example'; // string | Id of the bank transaction
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getBankTransaction($bankTransactionId);
+    $result = $apiInstance->getBankTransaction($bankTransactionId, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BankTransactionApi->getBankTransaction: ', $e->getMessage(), PHP_EOL;
@@ -156,6 +170,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bankTransactionId** | **string**| Id of the bank transaction | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -163,7 +178,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -177,7 +192,7 @@ No authorization required
 ## `lockBankTransaction()`
 
 ```php
-lockBankTransaction($bankTransactionId): string
+lockBankTransaction($bankTransactionId, $domain): string
 ```
 
 Lock a bank transaction
@@ -189,6 +204,9 @@ Lock a bank transaction
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -196,9 +214,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     config: $config
 );
 $bankTransactionId = 'bankTransactionId_example'; // string | Id of the bank transaction
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->lockBankTransaction($bankTransactionId);
+    $result = $apiInstance->lockBankTransaction($bankTransactionId, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BankTransactionApi->lockBankTransaction: ', $e->getMessage(), PHP_EOL;
@@ -210,6 +229,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bankTransactionId** | **string**| Id of the bank transaction | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -217,7 +237,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -231,7 +251,7 @@ No authorization required
 ## `unlockBankTransaction()`
 
 ```php
-unlockBankTransaction($bankTransactionId): string
+unlockBankTransaction($bankTransactionId, $domain): string
 ```
 
 Unlock a bank transaction
@@ -243,6 +263,9 @@ Unlock a bank transaction
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -250,9 +273,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     config: $config
 );
 $bankTransactionId = 'bankTransactionId_example'; // string | Id of the bank transaction
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->unlockBankTransaction($bankTransactionId);
+    $result = $apiInstance->unlockBankTransaction($bankTransactionId, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BankTransactionApi->unlockBankTransaction: ', $e->getMessage(), PHP_EOL;
@@ -264,6 +288,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bankTransactionId** | **string**| Id of the bank transaction | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -271,7 +296,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -285,7 +310,7 @@ No authorization required
 ## `updateBankTransaction()`
 
 ```php
-updateBankTransaction($bankTransactionId, $bankTransactionUpdate): string
+updateBankTransaction($bankTransactionId, $domain, $bankTransactionUpdate): string
 ```
 
 Update a bank transaction
@@ -297,6 +322,9 @@ Update a bank transaction
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -304,10 +332,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\BankTransactionApi(
     config: $config
 );
 $bankTransactionId = 'bankTransactionId_example'; // string | Id of the bank transaction
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $bankTransactionUpdate = new \SynergiTech\Iplicit\Model\BankTransactionUpdate(); // \SynergiTech\Iplicit\Model\BankTransactionUpdate |
 
 try {
-    $result = $apiInstance->updateBankTransaction($bankTransactionId, $bankTransactionUpdate);
+    $result = $apiInstance->updateBankTransaction($bankTransactionId, $domain, $bankTransactionUpdate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BankTransactionApi->updateBankTransaction: ', $e->getMessage(), PHP_EOL;
@@ -319,6 +348,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bankTransactionId** | **string**| Id of the bank transaction | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **bankTransactionUpdate** | [**\SynergiTech\Iplicit\Model\BankTransactionUpdate**](../Model/BankTransactionUpdate.md)|  | [optional] |
 
 ### Return type
@@ -327,7 +357,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

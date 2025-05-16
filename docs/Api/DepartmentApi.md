@@ -15,7 +15,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `createDepartment()`
 
 ```php
-createDepartment($departmentCreate): string
+createDepartment($domain, $departmentCreate): string
 ```
 
 Create a department
@@ -27,16 +27,20 @@ Create a department
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DepartmentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $departmentCreate = new \SynergiTech\Iplicit\Model\DepartmentCreate(); // \SynergiTech\Iplicit\Model\DepartmentCreate |
 
 try {
-    $result = $apiInstance->createDepartment($departmentCreate);
+    $result = $apiInstance->createDepartment($domain, $departmentCreate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DepartmentApi->createDepartment: ', $e->getMessage(), PHP_EOL;
@@ -47,6 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **departmentCreate** | [**\SynergiTech\Iplicit\Model\DepartmentCreate**](../Model/DepartmentCreate.md)|  | [optional] |
 
 ### Return type
@@ -55,7 +60,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -69,7 +74,7 @@ No authorization required
 ## `getDepartment()`
 
 ```php
-getDepartment($departmentRef, $include): \SynergiTech\Iplicit\Model\DepartmentRead
+getDepartment($departmentRef, $domain, $include): \SynergiTech\Iplicit\Model\DepartmentRead
 ```
 
 Get a department
@@ -81,6 +86,9 @@ Get a department
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DepartmentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -88,10 +96,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DepartmentApi(
     config: $config
 );
 $departmentRef = 'departmentRef_example'; // string | `Id` or `Code` of the department
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $include = 'include_example'; // string | Comma separated list of detail to include: `resources`, `subDepartments`. If omitted, no additional detail will be included.
 
 try {
-    $result = $apiInstance->getDepartment($departmentRef, $include);
+    $result = $apiInstance->getDepartment($departmentRef, $domain, $include);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DepartmentApi->getDepartment: ', $e->getMessage(), PHP_EOL;
@@ -103,6 +112,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **departmentRef** | **string**| &#x60;Id&#x60; or &#x60;Code&#x60; of the department | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **include** | **string**| Comma separated list of detail to include: &#x60;resources&#x60;, &#x60;subDepartments&#x60;. If omitted, no additional detail will be included. | [optional] |
 
 ### Return type
@@ -111,7 +121,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -125,7 +135,7 @@ No authorization required
 ## `getDepartments()`
 
 ```php
-getDepartments($descriptionContains, $codeContains, $parentDepartment, $legalEntity, $managerResource, $isActive, $includeClosed, $take, $skip): \SynergiTech\Iplicit\Model\DepartmentSearch[]
+getDepartments($domain, $descriptionContains, $codeContains, $parentDepartment, $legalEntity, $managerResource, $isActive, $includeClosed, $take, $skip): \SynergiTech\Iplicit\Model\DepartmentSearch[]
 ```
 
 Get a list of departments with a search filter
@@ -137,12 +147,16 @@ Get a list of departments with a search filter
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DepartmentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $descriptionContains = 'descriptionContains_example'; // string | Use to only search department where the description contains the text
 $codeContains = 'codeContains_example'; // string | Use to only search department where the code contains the text
 $parentDepartment = 'parentDepartment_example'; // string | Use to only search department with the parent department. Accepts id or code.
@@ -154,7 +168,7 @@ $take = 100; // int | The number of records to return
 $skip = 0; // int | The number of records to skip
 
 try {
-    $result = $apiInstance->getDepartments($descriptionContains, $codeContains, $parentDepartment, $legalEntity, $managerResource, $isActive, $includeClosed, $take, $skip);
+    $result = $apiInstance->getDepartments($domain, $descriptionContains, $codeContains, $parentDepartment, $legalEntity, $managerResource, $isActive, $includeClosed, $take, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DepartmentApi->getDepartments: ', $e->getMessage(), PHP_EOL;
@@ -165,6 +179,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **descriptionContains** | **string**| Use to only search department where the description contains the text | [optional] |
 | **codeContains** | **string**| Use to only search department where the code contains the text | [optional] |
 | **parentDepartment** | **string**| Use to only search department with the parent department. Accepts id or code. | [optional] |
@@ -181,7 +196,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -195,7 +210,7 @@ No authorization required
 ## `lockDepartment()`
 
 ```php
-lockDepartment($departmentRef): string
+lockDepartment($departmentRef, $domain): string
 ```
 
 Lock a department
@@ -207,6 +222,9 @@ Lock a department
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DepartmentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -214,9 +232,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\DepartmentApi(
     config: $config
 );
 $departmentRef = 'departmentRef_example'; // string | Id or code of the department
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->lockDepartment($departmentRef);
+    $result = $apiInstance->lockDepartment($departmentRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DepartmentApi->lockDepartment: ', $e->getMessage(), PHP_EOL;
@@ -228,6 +247,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **departmentRef** | **string**| Id or code of the department | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -235,7 +255,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -249,7 +269,7 @@ No authorization required
 ## `unlockDepartment()`
 
 ```php
-unlockDepartment($departmentRef): string
+unlockDepartment($departmentRef, $domain): string
 ```
 
 Unlock a department
@@ -261,6 +281,9 @@ Unlock a department
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DepartmentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -268,9 +291,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\DepartmentApi(
     config: $config
 );
 $departmentRef = 'departmentRef_example'; // string | Id or code of the department
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->unlockDepartment($departmentRef);
+    $result = $apiInstance->unlockDepartment($departmentRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DepartmentApi->unlockDepartment: ', $e->getMessage(), PHP_EOL;
@@ -282,6 +306,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **departmentRef** | **string**| Id or code of the department | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -289,7 +314,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -303,7 +328,7 @@ No authorization required
 ## `upateDepartment()`
 
 ```php
-upateDepartment($departmentRef, $departmentUpdate): string
+upateDepartment($departmentRef, $domain, $departmentUpdate): string
 ```
 
 Update a department
@@ -315,6 +340,9 @@ Update a department
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DepartmentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -322,10 +350,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DepartmentApi(
     config: $config
 );
 $departmentRef = 'departmentRef_example'; // string | Id or code of the department
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $departmentUpdate = new \SynergiTech\Iplicit\Model\DepartmentUpdate(); // \SynergiTech\Iplicit\Model\DepartmentUpdate |
 
 try {
-    $result = $apiInstance->upateDepartment($departmentRef, $departmentUpdate);
+    $result = $apiInstance->upateDepartment($departmentRef, $domain, $departmentUpdate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DepartmentApi->upateDepartment: ', $e->getMessage(), PHP_EOL;
@@ -337,6 +366,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **departmentRef** | **string**| Id or code of the department | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **departmentUpdate** | [**\SynergiTech\Iplicit\Model\DepartmentUpdate**](../Model/DepartmentUpdate.md)|  | [optional] |
 
 ### Return type
@@ -345,7 +375,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

@@ -10,6 +10,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 | [**amendDocument()**](DocumentApi.md#amendDocument) | **PATCH** /api/Document/{idOrDocNo}/amend | Amend a document |
 | [**convertDocumentType()**](DocumentApi.md#convertDocumentType) | **POST** /api/Document/{fromDocId}/convert/{toDocType} | Convert a document to another type |
 | [**createDocument()**](DocumentApi.md#createDocument) | **POST** /api/Document | Create a document |
+| [**deleteDocumentAllocation()**](DocumentApi.md#deleteDocumentAllocation) | **DELETE** /api/Document/{idOrDocNo}/allocations/{allocationId} | Delete a document allocation |
 | [**deleteDocumentDetailLine()**](DocumentApi.md#deleteDocumentDetailLine) | **DELETE** /api/Document/{docRef}/detail/{docDetailRef} | Delete a document detail line |
 | [**disputeDocument()**](DocumentApi.md#disputeDocument) | **POST** /api/Document/{idOrDocNo}/dispute | Dispute a document |
 | [**getDocument()**](DocumentApi.md#getDocument) | **GET** /api/Document/{idOrDocNo} | Get a document by id or document number |
@@ -18,6 +19,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 | [**getDocumentMatchReverse()**](DocumentApi.md#getDocumentMatchReverse) | **GET** /api/Document/{idOrDocNo}/match/reverse | Get document match reverse details. |
 | [**getDocumentMatchSummary()**](DocumentApi.md#getDocumentMatchSummary) | **GET** /api/Document/{idOrDocNo}/match/outstanding/amount | Get document match summary (amount only). |
 | [**getDocuments()**](DocumentApi.md#getDocuments) | **GET** /api/Document | Get a list of documents with a search filter |
+| [**reverseDocument()**](DocumentApi.md#reverseDocument) | **POST** /api/Document/{idOrDocNo}/reverse | Reverse a document |
 | [**submitDocument()**](DocumentApi.md#submitDocument) | **POST** /api/Document/{docId}/submit | Submit the document for authorisation and posting. |
 | [**unauthoriseDocument()**](DocumentApi.md#unauthoriseDocument) | **POST** /api/Document/{idOrDocNo}/unauthorise | Unauthorise an approved document (non GL documents only). |
 | [**unpostDocument()**](DocumentApi.md#unpostDocument) | **POST** /api/Document/{idOrDocNo}/unpost | Unpost a document |
@@ -29,7 +31,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `abandonDocument()`
 
 ```php
-abandonDocument($idOrDocNo, $docClassArg): int
+abandonDocument($idOrDocNo, $domain, $docClassArg): int
 ```
 
 Abandon a draft document.
@@ -41,6 +43,9 @@ Abandon a draft document.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -48,10 +53,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $idOrDocNo = 'idOrDocNo_example'; // string | Id or document number of the document.
-$docClassArg = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | The document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClassArg = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | The document class
 
 try {
-    $result = $apiInstance->abandonDocument($idOrDocNo, $docClassArg);
+    $result = $apiInstance->abandonDocument($idOrDocNo, $domain, $docClassArg);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->abandonDocument: ', $e->getMessage(), PHP_EOL;
@@ -63,7 +69,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrDocNo** | **string**| Id or document number of the document. | |
-| **docClassArg** | [**DocClass**](../Model/.md)| The document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClassArg** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| The document class | [optional] |
 
 ### Return type
 
@@ -71,7 +78,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -85,7 +92,7 @@ No authorization required
 ## `addAllocationToDocument()`
 
 ```php
-addAllocationToDocument($docIdOrCode, $docId, $docClass, $docAllocationCreate): string
+addAllocationToDocument($docIdOrCode, $domain, $docId, $docClass, $docAllocationCreate): string
 ```
 
 Add an allocation to the document
@@ -97,6 +104,9 @@ Add an allocation to the document
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -104,12 +114,13 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $docIdOrCode = 'docIdOrCode_example'; // string
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $docId = 'docId_example'; // string | The document id
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | The document class
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | The document class
 $docAllocationCreate = new \SynergiTech\Iplicit\Model\DocAllocationCreate(); // \SynergiTech\Iplicit\Model\DocAllocationCreate
 
 try {
-    $result = $apiInstance->addAllocationToDocument($docIdOrCode, $docId, $docClass, $docAllocationCreate);
+    $result = $apiInstance->addAllocationToDocument($docIdOrCode, $domain, $docId, $docClass, $docAllocationCreate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->addAllocationToDocument: ', $e->getMessage(), PHP_EOL;
@@ -121,8 +132,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **docIdOrCode** | **string**|  | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **docId** | **string**| The document id | [optional] |
-| **docClass** | [**DocClass**](../Model/.md)| The document class | [optional] |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| The document class | [optional] |
 | **docAllocationCreate** | [**\SynergiTech\Iplicit\Model\DocAllocationCreate**](../Model/DocAllocationCreate.md)|  | [optional] |
 
 ### Return type
@@ -131,7 +143,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -145,7 +157,7 @@ No authorization required
 ## `addDocumentDetailLine()`
 
 ```php
-addDocumentDetailLine($docRef, $docClass, $docDetailUpdate)
+addDocumentDetailLine($docRef, $domain, $docClass, $docDetailUpdate)
 ```
 
 Add a document detail line
@@ -157,6 +169,9 @@ Add a document detail line
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -164,11 +179,12 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $docRef = 'docRef_example'; // string | The document reference
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | The document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | The document class
 $docDetailUpdate = new \SynergiTech\Iplicit\Model\DocDetailUpdate(); // \SynergiTech\Iplicit\Model\DocDetailUpdate
 
 try {
-    $apiInstance->addDocumentDetailLine($docRef, $docClass, $docDetailUpdate);
+    $apiInstance->addDocumentDetailLine($docRef, $domain, $docClass, $docDetailUpdate);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->addDocumentDetailLine: ', $e->getMessage(), PHP_EOL;
 }
@@ -179,7 +195,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **docRef** | **string**| The document reference | |
-| **docClass** | [**DocClass**](../Model/.md)| The document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| The document class | [optional] |
 | **docDetailUpdate** | [**\SynergiTech\Iplicit\Model\DocDetailUpdate**](../Model/DocDetailUpdate.md)|  | [optional] |
 
 ### Return type
@@ -188,7 +205,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -202,7 +219,7 @@ No authorization required
 ## `amendDocument()`
 
 ```php
-amendDocument($idOrDocNo, $documentAmend): string
+amendDocument($idOrDocNo, $domain, $documentAmend): string
 ```
 
 Amend a document
@@ -214,6 +231,9 @@ Amend a document
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -221,10 +241,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $idOrDocNo = 'idOrDocNo_example'; // string | Document id or number.
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $documentAmend = new \SynergiTech\Iplicit\Model\DocumentAmend(); // \SynergiTech\Iplicit\Model\DocumentAmend
 
 try {
-    $result = $apiInstance->amendDocument($idOrDocNo, $documentAmend);
+    $result = $apiInstance->amendDocument($idOrDocNo, $domain, $documentAmend);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->amendDocument: ', $e->getMessage(), PHP_EOL;
@@ -236,6 +257,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrDocNo** | **string**| Document id or number. | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **documentAmend** | [**\SynergiTech\Iplicit\Model\DocumentAmend**](../Model/DocumentAmend.md)|  | [optional] |
 
 ### Return type
@@ -244,7 +266,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -258,7 +280,7 @@ No authorization required
 ## `convertDocumentType()`
 
 ```php
-convertDocumentType($fromDocId, $toDocType): string
+convertDocumentType($fromDocId, $toDocType, $domain): string
 ```
 
 Convert a document to another type
@@ -272,6 +294,9 @@ The document must be authorised / posted. The created document will fully match 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -280,9 +305,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
 );
 $fromDocId = 'fromDocId_example'; // string
 $toDocType = 'toDocType_example'; // string
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->convertDocumentType($fromDocId, $toDocType);
+    $result = $apiInstance->convertDocumentType($fromDocId, $toDocType, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->convertDocumentType: ', $e->getMessage(), PHP_EOL;
@@ -295,6 +321,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **fromDocId** | **string**|  | |
 | **toDocType** | **string**|  | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -302,7 +329,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -316,12 +343,12 @@ No authorization required
 ## `createDocument()`
 
 ```php
-createDocument($docClass, $docCreate): string
+createDocument($domain, $docCreate): string
 ```
 
 Create a document
 
-docClass parameter is no longer used
+Note: docClass parameter is no longer used
 
 ### Example
 
@@ -330,17 +357,20 @@ docClass parameter is no longer used
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | The document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $docCreate = new \SynergiTech\Iplicit\Model\DocCreate(); // \SynergiTech\Iplicit\Model\DocCreate
 
 try {
-    $result = $apiInstance->createDocument($docClass, $docCreate);
+    $result = $apiInstance->createDocument($domain, $docCreate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->createDocument: ', $e->getMessage(), PHP_EOL;
@@ -351,7 +381,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **docClass** | [**DocClass**](../Model/.md)| The document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **docCreate** | [**\SynergiTech\Iplicit\Model\DocCreate**](../Model/DocCreate.md)|  | [optional] |
 
 ### Return type
@@ -360,7 +390,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -371,10 +401,71 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteDocumentAllocation()`
+
+```php
+deleteDocumentAllocation($idOrDocNo, $allocationId, $domain): string
+```
+
+Delete a document allocation
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    config: $config
+);
+$idOrDocNo = 'idOrDocNo_example'; // string | Document id or number.
+$allocationId = 'allocationId_example'; // string | Document allocation id.
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+
+try {
+    $result = $apiInstance->deleteDocumentAllocation($idOrDocNo, $allocationId, $domain);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DocumentApi->deleteDocumentAllocation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **idOrDocNo** | **string**| Document id or number. | |
+| **allocationId** | **string**| Document allocation id. | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteDocumentDetailLine()`
 
 ```php
-deleteDocumentDetailLine($docRef, $docDetailRef, $docClass)
+deleteDocumentDetailLine($docRef, $docDetailRef, $domain, $docClass)
 ```
 
 Delete a document detail line
@@ -386,6 +477,9 @@ Delete a document detail line
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -394,10 +488,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
 );
 $docRef = 'docRef_example'; // string | The document reference
 $docDetailRef = 'docDetailRef_example'; // string | The document detail reference
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | The document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | The document class
 
 try {
-    $apiInstance->deleteDocumentDetailLine($docRef, $docDetailRef, $docClass);
+    $apiInstance->deleteDocumentDetailLine($docRef, $docDetailRef, $domain, $docClass);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->deleteDocumentDetailLine: ', $e->getMessage(), PHP_EOL;
 }
@@ -409,7 +504,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **docRef** | **string**| The document reference | |
 | **docDetailRef** | **string**| The document detail reference | |
-| **docClass** | [**DocClass**](../Model/.md)| The document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| The document class | [optional] |
 
 ### Return type
 
@@ -417,7 +513,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -431,7 +527,7 @@ No authorization required
 ## `disputeDocument()`
 
 ```php
-disputeDocument($idOrDocNo, $documentDispute): string
+disputeDocument($idOrDocNo, $domain, $documentDispute): string
 ```
 
 Dispute a document
@@ -443,6 +539,9 @@ Dispute a document
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -450,10 +549,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $idOrDocNo = 'idOrDocNo_example'; // string | Document id or number.
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $documentDispute = new \SynergiTech\Iplicit\Model\DocumentDispute(); // \SynergiTech\Iplicit\Model\DocumentDispute
 
 try {
-    $result = $apiInstance->disputeDocument($idOrDocNo, $documentDispute);
+    $result = $apiInstance->disputeDocument($idOrDocNo, $domain, $documentDispute);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->disputeDocument: ', $e->getMessage(), PHP_EOL;
@@ -465,6 +565,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrDocNo** | **string**| Document id or number. | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **documentDispute** | [**\SynergiTech\Iplicit\Model\DocumentDispute**](../Model/DocumentDispute.md)|  | [optional] |
 
 ### Return type
@@ -473,7 +574,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -487,7 +588,7 @@ No authorization required
 ## `getDocument()`
 
 ```php
-getDocument($idOrDocNo, $docClass, $include): \SynergiTech\Iplicit\Model\Doc
+getDocument($idOrDocNo, $domain, $docClass, $include): \SynergiTech\Iplicit\Model\Doc
 ```
 
 Get a document by id or document number
@@ -499,6 +600,9 @@ Get a document by id or document number
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -506,11 +610,12 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $idOrDocNo = 'idOrDocNo_example'; // string | Id for document number of the document.
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | Document class, optional
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | Document class, optional
 $include = 'include_example'; // string | Comma separated list of details to include: `details`, `payments`, `tax`, `allocations`.
 
 try {
-    $result = $apiInstance->getDocument($idOrDocNo, $docClass, $include);
+    $result = $apiInstance->getDocument($idOrDocNo, $domain, $docClass, $include);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->getDocument: ', $e->getMessage(), PHP_EOL;
@@ -522,7 +627,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrDocNo** | **string**| Id for document number of the document. | |
-| **docClass** | [**DocClass**](../Model/.md)| Document class, optional | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| Document class, optional | [optional] |
 | **include** | **string**| Comma separated list of details to include: &#x60;details&#x60;, &#x60;payments&#x60;, &#x60;tax&#x60;, &#x60;allocations&#x60;. | [optional] |
 
 ### Return type
@@ -531,7 +637,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -545,7 +651,7 @@ No authorization required
 ## `getDocumentByIntRef()`
 
 ```php
-getDocumentByIntRef($intRef, $docClass, $include): \SynergiTech\Iplicit\Model\Doc
+getDocumentByIntRef($intRef, $domain, $docClass, $include): \SynergiTech\Iplicit\Model\Doc
 ```
 
 Get a document by the <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a>
@@ -557,6 +663,9 @@ Get a document by the <a href=\"https://docs.iplicit.com/dev/guide/identifiers/i
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -564,11 +673,12 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $intRef = 'intRef_example'; // string | Internal reference of the document.
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | Document class, optional
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | Document class, optional
 $include = 'include_example'; // string | Comma separated list of details to include: `details`, `payments`, `tax`, `allocations`.
 
 try {
-    $result = $apiInstance->getDocumentByIntRef($intRef, $docClass, $include);
+    $result = $apiInstance->getDocumentByIntRef($intRef, $domain, $docClass, $include);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->getDocumentByIntRef: ', $e->getMessage(), PHP_EOL;
@@ -580,7 +690,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **intRef** | **string**| Internal reference of the document. | |
-| **docClass** | [**DocClass**](../Model/.md)| Document class, optional | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| Document class, optional | [optional] |
 | **include** | **string**| Comma separated list of details to include: &#x60;details&#x60;, &#x60;payments&#x60;, &#x60;tax&#x60;, &#x60;allocations&#x60;. | [optional] |
 
 ### Return type
@@ -589,7 +700,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -603,7 +714,7 @@ No authorization required
 ## `getDocumentMatchDetails()`
 
 ```php
-getDocumentMatchDetails($idOrDocNo, $docClass)
+getDocumentMatchDetails($idOrDocNo, $domain, $docClass)
 ```
 
 Get document match details.
@@ -615,6 +726,9 @@ Get document match details.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -622,10 +736,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $idOrDocNo = 'idOrDocNo_example'; // string | Id or document number of the document.
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | Document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | Document class
 
 try {
-    $apiInstance->getDocumentMatchDetails($idOrDocNo, $docClass);
+    $apiInstance->getDocumentMatchDetails($idOrDocNo, $domain, $docClass);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->getDocumentMatchDetails: ', $e->getMessage(), PHP_EOL;
 }
@@ -636,7 +751,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrDocNo** | **string**| Id or document number of the document. | |
-| **docClass** | [**DocClass**](../Model/.md)| Document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| Document class | [optional] |
 
 ### Return type
 
@@ -644,7 +760,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -658,7 +774,7 @@ No authorization required
 ## `getDocumentMatchReverse()`
 
 ```php
-getDocumentMatchReverse($idOrDocNo, $docClass)
+getDocumentMatchReverse($idOrDocNo, $domain, $docClass)
 ```
 
 Get document match reverse details.
@@ -670,6 +786,9 @@ Get document match reverse details.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -677,10 +796,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $idOrDocNo = 'idOrDocNo_example'; // string | Id or document number of the document.
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | Document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | Document class
 
 try {
-    $apiInstance->getDocumentMatchReverse($idOrDocNo, $docClass);
+    $apiInstance->getDocumentMatchReverse($idOrDocNo, $domain, $docClass);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->getDocumentMatchReverse: ', $e->getMessage(), PHP_EOL;
 }
@@ -691,7 +811,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrDocNo** | **string**| Id or document number of the document. | |
-| **docClass** | [**DocClass**](../Model/.md)| Document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| Document class | [optional] |
 
 ### Return type
 
@@ -699,7 +820,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -713,7 +834,7 @@ No authorization required
 ## `getDocumentMatchSummary()`
 
 ```php
-getDocumentMatchSummary($idOrDocNo, $docClass)
+getDocumentMatchSummary($idOrDocNo, $domain, $docClass)
 ```
 
 Get document match summary (amount only).
@@ -725,6 +846,9 @@ Get document match summary (amount only).
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -732,10 +856,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $idOrDocNo = 'idOrDocNo_example'; // string | Id or document number of the document.
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | Document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | Document class
 
 try {
-    $apiInstance->getDocumentMatchSummary($idOrDocNo, $docClass);
+    $apiInstance->getDocumentMatchSummary($idOrDocNo, $domain, $docClass);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->getDocumentMatchSummary: ', $e->getMessage(), PHP_EOL;
 }
@@ -746,7 +871,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrDocNo** | **string**| Id or document number of the document. | |
-| **docClass** | [**DocClass**](../Model/.md)| Document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| Document class | [optional] |
 
 ### Return type
 
@@ -754,7 +880,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -768,7 +894,7 @@ No authorization required
 ## `getDocuments()`
 
 ```php
-getDocuments($docNo, $docType, $docTypeId, $contactAccount, $contactAccountId, $legalEntity, $legalEntityId, $currency, $project, $projectId, $description, $descriptionContains, $theirRef, $intRef, $legacyRef, $theirDocNo, $docClass, $docDateFrom, $docDateTo, $dueDateFrom, $dueDateTo, $lastModifiedFrom, $lastModifiedTo, $outstanding, $unmatched, $draft, $abandoned, $posted, $approved, $reversed, $take, $skip): \SynergiTech\Iplicit\Model\DocSummary[]
+getDocuments($domain, $docNo, $docType, $docTypeId, $contactAccount, $contactAccountId, $legalEntity, $legalEntityId, $currency, $project, $projectId, $description, $descriptionContains, $theirRef, $intRef, $legacyRef, $theirDocNo, $docClass, $docDateFrom, $docDateTo, $dueDateFrom, $dueDateTo, $lastModifiedFrom, $lastModifiedTo, $outstanding, $unmatched, $draft, $abandoned, $posted, $approved, $reversed, $take, $skip): \SynergiTech\Iplicit\Model\DocSummary[]
 ```
 
 Get a list of documents with a search filter
@@ -780,12 +906,16 @@ Get a list of documents with a search filter
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $docNo = 'docNo_example'; // string | The document number
 $docType = 'docType_example'; // string | The document type code
 $docTypeId = 'docTypeId_example'; // string | The document type id
@@ -802,13 +932,13 @@ $theirRef = 'theirRef_example'; // string | An external reference code
 $intRef = 'intRef_example'; // string | Optional interface reference. If provided, it must be unique. <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">Learn more</a>
 $legacyRef = 'legacyRef_example'; // string | Alternative / legacy reference code
 $theirDocNo = 'theirDocNo_example'; // string | An external document number
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | The document class
-$docDateFrom = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The document from date
-$docDateTo = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The document to date
-$dueDateFrom = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The document due from date
-$dueDateTo = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The document due to date
-$lastModifiedFrom = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The document last modified from date
-$lastModifiedTo = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The document last modified to date
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | The document class
+$docDateFrom = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | The document from date
+$docDateTo = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | The document to date
+$dueDateFrom = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | The document due from date
+$dueDateTo = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | The document due to date
+$lastModifiedFrom = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | The document last modified from date
+$lastModifiedTo = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | The document last modified to date
 $outstanding = True; // bool | The document outstanding flag
 $unmatched = True; // bool | The document unmatched flag
 $draft = True; // bool | The document draft flag
@@ -820,7 +950,7 @@ $take = 56; // int | The number of documents to take
 $skip = 56; // int | The number of documents to skip
 
 try {
-    $result = $apiInstance->getDocuments($docNo, $docType, $docTypeId, $contactAccount, $contactAccountId, $legalEntity, $legalEntityId, $currency, $project, $projectId, $description, $descriptionContains, $theirRef, $intRef, $legacyRef, $theirDocNo, $docClass, $docDateFrom, $docDateTo, $dueDateFrom, $dueDateTo, $lastModifiedFrom, $lastModifiedTo, $outstanding, $unmatched, $draft, $abandoned, $posted, $approved, $reversed, $take, $skip);
+    $result = $apiInstance->getDocuments($domain, $docNo, $docType, $docTypeId, $contactAccount, $contactAccountId, $legalEntity, $legalEntityId, $currency, $project, $projectId, $description, $descriptionContains, $theirRef, $intRef, $legacyRef, $theirDocNo, $docClass, $docDateFrom, $docDateTo, $dueDateFrom, $dueDateTo, $lastModifiedFrom, $lastModifiedTo, $outstanding, $unmatched, $draft, $abandoned, $posted, $approved, $reversed, $take, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->getDocuments: ', $e->getMessage(), PHP_EOL;
@@ -831,6 +961,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **docNo** | **string**| The document number | [optional] |
 | **docType** | **string**| The document type code | [optional] |
 | **docTypeId** | **string**| The document type id | [optional] |
@@ -847,7 +978,7 @@ try {
 | **intRef** | **string**| Optional interface reference. If provided, it must be unique. &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;Learn more&lt;/a&gt; | [optional] |
 | **legacyRef** | **string**| Alternative / legacy reference code | [optional] |
 | **theirDocNo** | **string**| An external document number | [optional] |
-| **docClass** | [**DocClass**](../Model/.md)| The document class | [optional] |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| The document class | [optional] |
 | **docDateFrom** | **\DateTime**| The document from date | [optional] |
 | **docDateTo** | **\DateTime**| The document to date | [optional] |
 | **dueDateFrom** | **\DateTime**| The document due from date | [optional] |
@@ -870,7 +1001,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -881,10 +1012,71 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `reverseDocument()`
+
+```php
+reverseDocument($idOrDocNo, $domain, $documentReverse): string
+```
+
+Reverse a document
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    config: $config
+);
+$idOrDocNo = 'idOrDocNo_example'; // string | Document id or number.
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$documentReverse = new \SynergiTech\Iplicit\Model\DocumentReverse(); // \SynergiTech\Iplicit\Model\DocumentReverse
+
+try {
+    $result = $apiInstance->reverseDocument($idOrDocNo, $domain, $documentReverse);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DocumentApi->reverseDocument: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **idOrDocNo** | **string**| Document id or number. | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **documentReverse** | [**\SynergiTech\Iplicit\Model\DocumentReverse**](../Model/DocumentReverse.md)|  | [optional] |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Bearer](../../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `submitDocument()`
 
 ```php
-submitDocument($docId, $docClass)
+submitDocument($docId, $domain, $docClass)
 ```
 
 Submit the document for authorisation and posting.
@@ -896,6 +1088,9 @@ Submit the document for authorisation and posting.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -903,10 +1098,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $docId = 'docId_example'; // string | Id of the document.
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | Document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | Document class
 
 try {
-    $apiInstance->submitDocument($docId, $docClass);
+    $apiInstance->submitDocument($docId, $domain, $docClass);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->submitDocument: ', $e->getMessage(), PHP_EOL;
 }
@@ -917,7 +1113,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **docId** | **string**| Id of the document. | |
-| **docClass** | [**DocClass**](../Model/.md)| Document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| Document class | [optional] |
 
 ### Return type
 
@@ -925,7 +1122,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -939,7 +1136,7 @@ No authorization required
 ## `unauthoriseDocument()`
 
 ```php
-unauthoriseDocument($idOrDocNo, $docClassArg): int
+unauthoriseDocument($idOrDocNo, $domain, $docClassArg): int
 ```
 
 Unauthorise an approved document (non GL documents only).
@@ -951,6 +1148,9 @@ Unauthorise an approved document (non GL documents only).
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -958,10 +1158,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $idOrDocNo = 'idOrDocNo_example'; // string | Id or document number of the document.
-$docClassArg = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | The document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClassArg = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | The document class
 
 try {
-    $result = $apiInstance->unauthoriseDocument($idOrDocNo, $docClassArg);
+    $result = $apiInstance->unauthoriseDocument($idOrDocNo, $domain, $docClassArg);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->unauthoriseDocument: ', $e->getMessage(), PHP_EOL;
@@ -973,7 +1174,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrDocNo** | **string**| Id or document number of the document. | |
-| **docClassArg** | [**DocClass**](../Model/.md)| The document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClassArg** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| The document class | [optional] |
 
 ### Return type
 
@@ -981,7 +1183,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -995,7 +1197,7 @@ No authorization required
 ## `unpostDocument()`
 
 ```php
-unpostDocument($idOrDocNo)
+unpostDocument($idOrDocNo, $domain)
 ```
 
 Unpost a document
@@ -1007,6 +1209,9 @@ Unpost a document
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1014,9 +1219,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $idOrDocNo = 'idOrDocNo_example'; // string | Document id or number.
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->unpostDocument($idOrDocNo);
+    $apiInstance->unpostDocument($idOrDocNo, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->unpostDocument: ', $e->getMessage(), PHP_EOL;
 }
@@ -1027,6 +1233,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrDocNo** | **string**| Document id or number. | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -1034,7 +1241,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1048,7 +1255,7 @@ No authorization required
 ## `updateDocument()`
 
 ```php
-updateDocument($idOrDocNo, $docClass, $docUpdate)
+updateDocument($idOrDocNo, $domain, $docClass, $docUpdate)
 ```
 
 Update a document
@@ -1060,6 +1267,9 @@ Update a document
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1067,11 +1277,12 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $idOrDocNo = 'idOrDocNo_example'; // string | Id or document number of the document
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | The document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | The document class
 $docUpdate = new \SynergiTech\Iplicit\Model\DocUpdate(); // \SynergiTech\Iplicit\Model\DocUpdate
 
 try {
-    $apiInstance->updateDocument($idOrDocNo, $docClass, $docUpdate);
+    $apiInstance->updateDocument($idOrDocNo, $domain, $docClass, $docUpdate);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->updateDocument: ', $e->getMessage(), PHP_EOL;
 }
@@ -1082,7 +1293,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrDocNo** | **string**| Id or document number of the document | |
-| **docClass** | [**DocClass**](../Model/.md)| The document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| The document class | [optional] |
 | **docUpdate** | [**\SynergiTech\Iplicit\Model\DocUpdate**](../Model/DocUpdate.md)|  | [optional] |
 
 ### Return type
@@ -1091,7 +1303,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1105,7 +1317,7 @@ No authorization required
 ## `updateDocumentDetailLine()`
 
 ```php
-updateDocumentDetailLine($docRef, $docDetailRef, $docClass, $docDetailUpdate)
+updateDocumentDetailLine($docRef, $docDetailRef, $domain, $docClass, $docDetailUpdate)
 ```
 
 Update a document detail line
@@ -1117,6 +1329,9 @@ Update a document detail line
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1125,11 +1340,12 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
 );
 $docRef = 'docRef_example'; // string | The document reference
 $docDetailRef = 'docDetailRef_example'; // string | The document detail reference
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | The document class
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | The document class
 $docDetailUpdate = new \SynergiTech\Iplicit\Model\DocDetailUpdate(); // \SynergiTech\Iplicit\Model\DocDetailUpdate
 
 try {
-    $apiInstance->updateDocumentDetailLine($docRef, $docDetailRef, $docClass, $docDetailUpdate);
+    $apiInstance->updateDocumentDetailLine($docRef, $docDetailRef, $domain, $docClass, $docDetailUpdate);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->updateDocumentDetailLine: ', $e->getMessage(), PHP_EOL;
 }
@@ -1141,7 +1357,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **docRef** | **string**| The document reference | |
 | **docDetailRef** | **string**| The document detail reference | |
-| **docClass** | [**DocClass**](../Model/.md)| The document class | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| The document class | [optional] |
 | **docDetailUpdate** | [**\SynergiTech\Iplicit\Model\DocDetailUpdate**](../Model/DocDetailUpdate.md)|  | [optional] |
 
 ### Return type
@@ -1150,7 +1367,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1164,7 +1381,7 @@ No authorization required
 ## `updateDocumentDetailLineObsolete()`
 
 ```php
-updateDocumentDetailLineObsolete($docDetailId, $docClass, $docDetailUpdate)
+updateDocumentDetailLineObsolete($docDetailId, $domain, $docClass, $docDetailUpdateReducedFields)
 ```
 
 Update a document detail line
@@ -1178,6 +1395,9 @@ Use PATCH /doc/{docRef}/detail/{docDetailRef} instead
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -1185,11 +1405,12 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentApi(
     config: $config
 );
 $docDetailId = 'docDetailId_example'; // string | The document detail id
-$docClass = new \SynergiTech\Iplicit\Model\DocClass(); // DocClass | The document class
-$docDetailUpdate = new \SynergiTech\Iplicit\Model\DocDetailUpdate(); // \SynergiTech\Iplicit\Model\DocDetailUpdate
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$docClass = new \SynergiTech\Iplicit\Model\\SynergiTech\Iplicit\Model\DocClass(); // \SynergiTech\Iplicit\Model\DocClass | The document class
+$docDetailUpdateReducedFields = new \SynergiTech\Iplicit\Model\DocDetailUpdateReducedFields(); // \SynergiTech\Iplicit\Model\DocDetailUpdateReducedFields
 
 try {
-    $apiInstance->updateDocumentDetailLineObsolete($docDetailId, $docClass, $docDetailUpdate);
+    $apiInstance->updateDocumentDetailLineObsolete($docDetailId, $domain, $docClass, $docDetailUpdateReducedFields);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentApi->updateDocumentDetailLineObsolete: ', $e->getMessage(), PHP_EOL;
 }
@@ -1200,8 +1421,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **docDetailId** | **string**| The document detail id | |
-| **docClass** | [**DocClass**](../Model/.md)| The document class | [optional] |
-| **docDetailUpdate** | [**\SynergiTech\Iplicit\Model\DocDetailUpdate**](../Model/DocDetailUpdate.md)|  | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **docClass** | [**\SynergiTech\Iplicit\Model\DocClass**](../Model/.md)| The document class | [optional] |
+| **docDetailUpdateReducedFields** | [**\SynergiTech\Iplicit\Model\DocDetailUpdateReducedFields**](../Model/DocDetailUpdateReducedFields.md)|  | [optional] |
 
 ### Return type
 
@@ -1209,7 +1431,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

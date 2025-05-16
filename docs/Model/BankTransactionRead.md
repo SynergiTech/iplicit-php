@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | The bank transaction unique id | [optional]
-**bankAccountId** | **string** | The bank transaction bank acccount id | [optional]
+**bankAccountId** | **string** | The bank transaction bank account id | [optional]
 **bankStatementId** | **string** | The bank transaction bank statement id | [optional]
 **description** | **string** | The bank transaction description | [optional]
 **bankDate** | **\DateTime** | The bank transaction bank date | [optional]
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **withdrawalAmount** | **float** | The bank transaction bank withdrawal amount | [optional]
 **amount** | **float** | The bank transaction amount | [optional]
 **postDate** | **\DateTime** | The bank transaction post date | [optional]
-**bankReference** | **string** | The bank transaction bank referencee | [optional]
+**bankReference** | **string** | The bank transaction bank reference | [optional]
 **merchantName** | **string** | The bank transaction merchant name | [optional]
 **paymentMethodCode** | **string** | The bank transaction payment method code | [optional]
 **lastModified** | **\DateTime** |  | [optional]

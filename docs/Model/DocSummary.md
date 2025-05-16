@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **docDate** | **\DateTime** | The document date | [optional]
 **description** | **string** | The document description | [optional]
 **legalEntityId** | **string** | The document legal entity id | [optional]
+**cdacId** | **string** | The document custom data access control (CDAC) Id | [optional]
 **contactAccountId** | **string** | The document contact account id | [optional]
 **contactAccountDescription** | **string** | The document contact account description | [optional]
 **taxDate** | **\DateTime** | The document tax date | [optional]
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 **periodId** | **string** | The document period id | [optional]
 **projectId** | **string** | The document project id | [optional]
 **netAmount** | **float** | The document net amount | [optional]
-**taxAmount** | **float** | The document tax amouunt | [optional]
+**taxAmount** | **float** | The document tax amount | [optional]
 **grossAmount** | **float** | The document gross amount | [optional]
 **baseCurrency** | **string** | The document base currency | [optional]
 **currency** | **string** | The document currency | [optional]
@@ -63,5 +64,7 @@ Name | Type | Description | Notes
 **ext** | **array<string,mixed>** | The document custom fields | [optional]
 **textHeader** | **string** | The document text header | [optional]
 **textFooter** | **string** | The document text footer | [optional]
+**orderNo** | **string** | The document order number | [optional]
+**deliveryDate** | **\DateTime** | The document delivery date | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

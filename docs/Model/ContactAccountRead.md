@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **theirRef** | **string** | An external reference code | [optional]
 **countryCode** | **string** | Country code. See &#x60;Country&#x60; catalog. (ISO 3166, ALPHA-2) | [optional]
 **contactClassificationId** | **string** | Contact classification id | [optional]
+**isParent** | **bool** | Is parent flag | [optional]
+**parentContactAccountId** | **string** | Parent contact account id | [optional]
 **customer** | [**\SynergiTech\Iplicit\Model\ContactCustomerRead**](ContactCustomerRead.md) |  | [optional]
 **supplier** | [**\SynergiTech\Iplicit\Model\ContactSupplierRead**](ContactSupplierRead.md) |  | [optional]
 **resource** | [**\SynergiTech\Iplicit\Model\ContactResourceRead**](ContactResourceRead.md) |  | [optional]

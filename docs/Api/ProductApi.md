@@ -15,7 +15,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `createProduct()`
 
 ```php
-createProduct($productCreate): string
+createProduct($domain, $productCreate): string
 ```
 
 Create a product
@@ -27,16 +27,20 @@ Create a product
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProductApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
-$productCreate = new \SynergiTech\Iplicit\Model\ProductCreate(); // \SynergiTech\Iplicit\Model\ProductCreate
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$productCreate = new \SynergiTech\Iplicit\Model\ProductCreate(); // \SynergiTech\Iplicit\Model\ProductCreate |
 
 try {
-    $result = $apiInstance->createProduct($productCreate);
+    $result = $apiInstance->createProduct($domain, $productCreate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProductApi->createProduct: ', $e->getMessage(), PHP_EOL;
@@ -47,6 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **productCreate** | [**\SynergiTech\Iplicit\Model\ProductCreate**](../Model/ProductCreate.md)|  | [optional] |
 
 ### Return type
@@ -55,7 +60,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -69,7 +74,7 @@ No authorization required
 ## `deleteProduct()`
 
 ```php
-deleteProduct($id)
+deleteProduct($id, $domain)
 ```
 
 Permanently delete a product
@@ -81,6 +86,9 @@ Permanently delete a product
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProductApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -88,9 +96,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProductApi(
     config: $config
 );
 $id = 'id_example'; // string | Id of the product
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->deleteProduct($id);
+    $apiInstance->deleteProduct($id, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ProductApi->deleteProduct: ', $e->getMessage(), PHP_EOL;
 }
@@ -101,6 +110,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Id of the product | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -108,12 +118,12 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -122,7 +132,7 @@ No authorization required
 ## `getProduct()`
 
 ```php
-getProduct($idOrCode, $include): \SynergiTech\Iplicit\Model\ProductRead
+getProduct($idOrCode, $domain, $include): \SynergiTech\Iplicit\Model\ProductRead
 ```
 
 Get a product
@@ -134,6 +144,9 @@ Get a product
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProductApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -141,10 +154,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProductApi(
     config: $config
 );
 $idOrCode = 'idOrCode_example'; // string | Id or code of the product
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $include = 'include_example'; // string | Comma separated list of details to include: `ext`.
 
 try {
-    $result = $apiInstance->getProduct($idOrCode, $include);
+    $result = $apiInstance->getProduct($idOrCode, $domain, $include);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProductApi->getProduct: ', $e->getMessage(), PHP_EOL;
@@ -156,6 +170,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrCode** | **string**| Id or code of the product | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **include** | **string**| Comma separated list of details to include: &#x60;ext&#x60;. | [optional] |
 
 ### Return type
@@ -164,7 +179,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -178,7 +193,7 @@ No authorization required
 ## `getProducts()`
 
 ```php
-getProducts($descriptionContains, $productGroupId, $isPurchase, $isSale, $lastModifiedFrom, $lastModifiedTo, $take, $skip): \SynergiTech\Iplicit\Model\ProductSummary[]
+getProducts($domain, $descriptionContains, $productGroupId, $isPurchase, $isSale, $lastModifiedFrom, $lastModifiedTo, $take, $skip): \SynergiTech\Iplicit\Model\ProductSummary[]
 ```
 
 Get a list of products with a search filter
@@ -192,23 +207,27 @@ The results are paginated using the !:skip and !:take parameters.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProductApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
-$descriptionContains = 'descriptionContains_example'; // string
-$productGroupId = 'productGroupId_example'; // string
-$isPurchase = True; // bool
-$isSale = True; // bool
-$lastModifiedFrom = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
-$lastModifiedTo = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$descriptionContains = 'descriptionContains_example'; // string | The product description contains
+$productGroupId = 'productGroupId_example'; // string | The product group id
+$isPurchase = True; // bool | The product purchase flag
+$isSale = True; // bool | The product sale flag
+$lastModifiedFrom = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | The product last modified from date
+$lastModifiedTo = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | The product last modified to date
 $take = 100; // int | The number of records to return
 $skip = 0; // int | The number of records to skip
 
 try {
-    $result = $apiInstance->getProducts($descriptionContains, $productGroupId, $isPurchase, $isSale, $lastModifiedFrom, $lastModifiedTo, $take, $skip);
+    $result = $apiInstance->getProducts($domain, $descriptionContains, $productGroupId, $isPurchase, $isSale, $lastModifiedFrom, $lastModifiedTo, $take, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProductApi->getProducts: ', $e->getMessage(), PHP_EOL;
@@ -219,12 +238,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **descriptionContains** | **string**|  | [optional] |
-| **productGroupId** | **string**|  | [optional] |
-| **isPurchase** | **bool**|  | [optional] |
-| **isSale** | **bool**|  | [optional] |
-| **lastModifiedFrom** | **\DateTime**|  | [optional] |
-| **lastModifiedTo** | **\DateTime**|  | [optional] |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
+| **descriptionContains** | **string**| The product description contains | [optional] |
+| **productGroupId** | **string**| The product group id | [optional] |
+| **isPurchase** | **bool**| The product purchase flag | [optional] |
+| **isSale** | **bool**| The product sale flag | [optional] |
+| **lastModifiedFrom** | **\DateTime**| The product last modified from date | [optional] |
+| **lastModifiedTo** | **\DateTime**| The product last modified to date | [optional] |
 | **take** | **int**| The number of records to return | [optional] [default to 100] |
 | **skip** | **int**| The number of records to skip | [optional] [default to 0] |
 
@@ -234,7 +254,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -248,7 +268,7 @@ No authorization required
 ## `lockProduct()`
 
 ```php
-lockProduct($id): string
+lockProduct($id, $domain): string
 ```
 
 Lock a product
@@ -262,6 +282,9 @@ A locked product will mark all aspects (sale, purchase, etc) as inactive.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProductApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -269,9 +292,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProductApi(
     config: $config
 );
 $id = 'id_example'; // string | Id of the product
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->lockProduct($id);
+    $result = $apiInstance->lockProduct($id, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProductApi->lockProduct: ', $e->getMessage(), PHP_EOL;
@@ -283,6 +307,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Id of the product | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -290,7 +315,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -304,7 +329,7 @@ No authorization required
 ## `updateProduct()`
 
 ```php
-updateProduct($idOrCode, $productUpdate): string
+updateProduct($idOrCode, $domain, $productUpdate): string
 ```
 
 Update a product
@@ -316,6 +341,9 @@ Update a product
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProductApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -323,10 +351,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ProductApi(
     config: $config
 );
 $idOrCode = 'idOrCode_example'; // string | Id or code of the product
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $productUpdate = new \SynergiTech\Iplicit\Model\ProductUpdate(); // \SynergiTech\Iplicit\Model\ProductUpdate |
 
 try {
-    $result = $apiInstance->updateProduct($idOrCode, $productUpdate);
+    $result = $apiInstance->updateProduct($idOrCode, $domain, $productUpdate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProductApi->updateProduct: ', $e->getMessage(), PHP_EOL;
@@ -338,6 +367,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrCode** | **string**| Id or code of the product | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **productUpdate** | [**\SynergiTech\Iplicit\Model\ProductUpdate**](../Model/ProductUpdate.md)|  | [optional] |
 
 ### Return type
@@ -346,7 +376,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

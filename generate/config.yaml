@@ -1,6 +1,6 @@
 templateDir: /local/generate/template
 additionalProperties:
-  artifactVersion: 1.8.0
+  artifactVersion: 1.13.0
   composerPackageName: synergitech/iplicit-php
   developerOrganization: "Synergi Tech"
   developerOrganizationUrl: https://synergi.tech

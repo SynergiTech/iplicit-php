@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **isNetEntry** | **bool** | The document detail is net entry flag | [optional]
 **currencyUnitPrice** | **float** | The document detail currency unit price | [optional]
 **netCurrencyUnitPrice** | **float** | The document detail net currency unit price | [optional]
-**grossCurrencyUnitPrice** | **float** | The document detail gorss currency unit price | [optional]
+**grossCurrencyUnitPrice** | **float** | The document detail gross currency unit price | [optional]
 **quantity** | **float** | The document detail quantity | [optional]
 **skuQuantity** | **float** | The document detail sku quantity | [optional]
 **netCurrencyAmount** | **float** | The document detail net currency amount | [optional]

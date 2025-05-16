@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **theirRef** | **string** |  | [optional]
 **countryCode** | **string** | Country code. See &#x60;Country&#x60; catalog. (ISO 3166, ALPHA-2) | [optional]
 **contactClassificationId** | **string** | Optional, Contact classification id or code | [optional]
+**isParent** | **bool** | Is parent flag | [optional]
+**parentContactAccountId** | **string** | Parent contact account id or code | [optional]
 **customer** | [**\SynergiTech\Iplicit\Model\ContactCustomerUpdate**](ContactCustomerUpdate.md) |  | [optional]
 **supplier** | [**\SynergiTech\Iplicit\Model\ContactSupplierUpdate**](ContactSupplierUpdate.md) |  | [optional]
 **resource** | [**\SynergiTech\Iplicit\Model\ContactResourceUpdate**](ContactResourceUpdate.md) |  | [optional]

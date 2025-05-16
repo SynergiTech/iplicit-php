@@ -10,7 +10,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `getProfile()`
 
 ```php
-getProfile(): \SynergiTech\Iplicit\Model\ProfileRead
+getProfile($domain): \SynergiTech\Iplicit\Model\ProfileRead
 ```
 
 Get profile of current session
@@ -24,15 +24,19 @@ Can be used to test authentication
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ProfileApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getProfile();
+    $result = $apiInstance->getProfile($domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfileApi->getProfile: ', $e->getMessage(), PHP_EOL;
@@ -41,7 +45,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -49,7 +55,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

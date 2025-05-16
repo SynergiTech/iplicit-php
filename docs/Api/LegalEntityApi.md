@@ -10,7 +10,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `getAllLegalEntities()`
 
 ```php
-getAllLegalEntities($take, $skip): \SynergiTech\Iplicit\Model\LegalEntity[]
+getAllLegalEntities($domain, $take, $skip): \SynergiTech\Iplicit\Model\LegalEntity[]
 ```
 
 Get all legal entities
@@ -22,17 +22,21 @@ Get all legal entities
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\LegalEntityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $take = 100; // int | The number of records to return
 $skip = 0; // int | The number of records to skip
 
 try {
-    $result = $apiInstance->getAllLegalEntities($take, $skip);
+    $result = $apiInstance->getAllLegalEntities($domain, $take, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LegalEntityApi->getAllLegalEntities: ', $e->getMessage(), PHP_EOL;
@@ -43,6 +47,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **take** | **int**| The number of records to return | [optional] [default to 100] |
 | **skip** | **int**| The number of records to skip | [optional] [default to 0] |
 
@@ -52,7 +57,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

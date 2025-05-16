@@ -4,7 +4,7 @@ We've cached a copy of the swagger.yaml to avoid annoying their API so you can d
 
 ```sh
 docker run --rm -v "$(pwd):/local" openapitools/openapi-generator-cli generate \
-    --input-spec /local/swagger-1.8.0.yaml \
+    --input-spec /local/swagger-1.13.0.yaml \
     --config /local/generate/config.yaml \
     --generator-name php-nextgen \
     --git-user-id synergitech \
@@ -14,3 +14,5 @@ docker run --rm -v "$(pwd):/local" openapitools/openapi-generator-cli generate \
 ```
 
 You will need to edit the README.md back to something which makes sense. You will also need to exclude the generate directory and find/replace `http://localhost` with `https://api.iplicit.com` and `new GuzzleHttp\Client()` with `config: $config`
+
+Also they've ruined the question marks on the function types, need to find replace all `    ??` with `    ?`.

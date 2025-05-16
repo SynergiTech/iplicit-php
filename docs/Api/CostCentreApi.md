@@ -15,7 +15,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `createCostCentre()`
 
 ```php
-createCostCentre($costCentreCreate): string
+createCostCentre($domain, $costCentreCreate): string
 ```
 
 Create a cost centre
@@ -27,16 +27,20 @@ Create a cost centre
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\CostCentreApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $costCentreCreate = new \SynergiTech\Iplicit\Model\CostCentreCreate(); // \SynergiTech\Iplicit\Model\CostCentreCreate |
 
 try {
-    $result = $apiInstance->createCostCentre($costCentreCreate);
+    $result = $apiInstance->createCostCentre($domain, $costCentreCreate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CostCentreApi->createCostCentre: ', $e->getMessage(), PHP_EOL;
@@ -47,6 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **costCentreCreate** | [**\SynergiTech\Iplicit\Model\CostCentreCreate**](../Model/CostCentreCreate.md)|  | [optional] |
 
 ### Return type
@@ -55,7 +60,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -69,7 +74,7 @@ No authorization required
 ## `getCostCentre()`
 
 ```php
-getCostCentre($costCentreRef, $include): \SynergiTech\Iplicit\Model\CostCentreRead
+getCostCentre($costCentreRef, $domain, $include): \SynergiTech\Iplicit\Model\CostCentreRead
 ```
 
 Get a cost centre
@@ -81,6 +86,9 @@ Get a cost centre
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\CostCentreApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -88,10 +96,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\CostCentreApi(
     config: $config
 );
 $costCentreRef = 'costCentreRef_example'; // string | Id or code of the cost centre
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $include = 'include_example'; // string | Comma separated list of detail to include: `resources`, `subCostCentres`. Default is no detail returned.
 
 try {
-    $result = $apiInstance->getCostCentre($costCentreRef, $include);
+    $result = $apiInstance->getCostCentre($costCentreRef, $domain, $include);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CostCentreApi->getCostCentre: ', $e->getMessage(), PHP_EOL;
@@ -103,6 +112,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **costCentreRef** | **string**| Id or code of the cost centre | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **include** | **string**| Comma separated list of detail to include: &#x60;resources&#x60;, &#x60;subCostCentres&#x60;. Default is no detail returned. | [optional] |
 
 ### Return type
@@ -111,7 +121,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -125,7 +135,7 @@ No authorization required
 ## `getCostCentres()`
 
 ```php
-getCostCentres($descriptionContains, $codeContains, $parentCostCentre, $legalEntity, $isActive, $includeClosed, $take, $skip): \SynergiTech\Iplicit\Model\CostCentreSearch[]
+getCostCentres($domain, $descriptionContains, $codeContains, $parentCostCentre, $legalEntity, $isActive, $includeClosed, $take, $skip): \SynergiTech\Iplicit\Model\CostCentreSearch[]
 ```
 
 Get a list of cost centres with a search filter
@@ -137,12 +147,16 @@ Get a list of cost centres with a search filter
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\CostCentreApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $descriptionContains = 'descriptionContains_example'; // string | Use to only search cost centres where the description contains the text
 $codeContains = 'codeContains_example'; // string | Use to only search cost centres where the code contains the text
 $parentCostCentre = 'parentCostCentre_example'; // string | Use to only search cost centres with the parent cost centre. Accepts id or code.
@@ -153,7 +167,7 @@ $take = 100; // int | The number of records to return
 $skip = 0; // int | The number of records to skip
 
 try {
-    $result = $apiInstance->getCostCentres($descriptionContains, $codeContains, $parentCostCentre, $legalEntity, $isActive, $includeClosed, $take, $skip);
+    $result = $apiInstance->getCostCentres($domain, $descriptionContains, $codeContains, $parentCostCentre, $legalEntity, $isActive, $includeClosed, $take, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CostCentreApi->getCostCentres: ', $e->getMessage(), PHP_EOL;
@@ -164,6 +178,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **descriptionContains** | **string**| Use to only search cost centres where the description contains the text | [optional] |
 | **codeContains** | **string**| Use to only search cost centres where the code contains the text | [optional] |
 | **parentCostCentre** | **string**| Use to only search cost centres with the parent cost centre. Accepts id or code. | [optional] |
@@ -179,7 +194,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -193,7 +208,7 @@ No authorization required
 ## `lockCostCentre()`
 
 ```php
-lockCostCentre($costCentreRef): string
+lockCostCentre($costCentreRef, $domain): string
 ```
 
 Lock the cost centre
@@ -205,6 +220,9 @@ Lock the cost centre
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\CostCentreApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -212,9 +230,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\CostCentreApi(
     config: $config
 );
 $costCentreRef = 'costCentreRef_example'; // string | Id or code of the cost centre
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->lockCostCentre($costCentreRef);
+    $result = $apiInstance->lockCostCentre($costCentreRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CostCentreApi->lockCostCentre: ', $e->getMessage(), PHP_EOL;
@@ -226,6 +245,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **costCentreRef** | **string**| Id or code of the cost centre | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -233,7 +253,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -247,7 +267,7 @@ No authorization required
 ## `unlockCostCentre()`
 
 ```php
-unlockCostCentre($costCentreRef): string
+unlockCostCentre($costCentreRef, $domain): string
 ```
 
 Unlock the cost centre
@@ -259,6 +279,9 @@ Unlock the cost centre
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\CostCentreApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -266,9 +289,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\CostCentreApi(
     config: $config
 );
 $costCentreRef = 'costCentreRef_example'; // string | `Id` or `Code` of the cost centre
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->unlockCostCentre($costCentreRef);
+    $result = $apiInstance->unlockCostCentre($costCentreRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CostCentreApi->unlockCostCentre: ', $e->getMessage(), PHP_EOL;
@@ -280,6 +304,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **costCentreRef** | **string**| &#x60;Id&#x60; or &#x60;Code&#x60; of the cost centre | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -287,7 +312,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -301,7 +326,7 @@ No authorization required
 ## `updateCostCentre()`
 
 ```php
-updateCostCentre($costCentreRef, $costCentreUpdate): string
+updateCostCentre($costCentreRef, $domain, $costCentreUpdate): string
 ```
 
 Update a cost centre
@@ -313,6 +338,9 @@ Update a cost centre
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\CostCentreApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -320,10 +348,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\CostCentreApi(
     config: $config
 );
 $costCentreRef = 'costCentreRef_example'; // string | Id or code of the cost centre
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $costCentreUpdate = new \SynergiTech\Iplicit\Model\CostCentreUpdate(); // \SynergiTech\Iplicit\Model\CostCentreUpdate |
 
 try {
-    $result = $apiInstance->updateCostCentre($costCentreRef, $costCentreUpdate);
+    $result = $apiInstance->updateCostCentre($costCentreRef, $domain, $costCentreUpdate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CostCentreApi->updateCostCentre: ', $e->getMessage(), PHP_EOL;
@@ -335,6 +364,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **costCentreRef** | **string**| Id or code of the cost centre | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **costCentreUpdate** | [**\SynergiTech\Iplicit\Model\CostCentreUpdate**](../Model/CostCentreUpdate.md)|  | [optional] |
 
 ### Return type
@@ -343,7 +373,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

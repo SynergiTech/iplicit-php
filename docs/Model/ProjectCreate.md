@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **isParent** | **bool** | The project is parent flag | [optional]
 **hasAddress** | **bool** | The project has address flag | [optional]
 **hasResources** | **bool** | The project has resources flag | [optional]
-**hasMilestones** | **bool** | The project has milstones flag | [optional]
+**hasMilestones** | **bool** | The project has milestones flag | [optional]
 **address** | [**\SynergiTech\Iplicit\Model\ProjectAddressCreate**](ProjectAddressCreate.md) |  | [optional]
 **availability** | [**\SynergiTech\Iplicit\Model\ProjectAvailabilityCreate[]**](ProjectAvailabilityCreate.md) | The project resource availability | [optional]
 **milestones** | [**\SynergiTech\Iplicit\Model\ProjectMilestoneCreate[]**](ProjectMilestoneCreate.md) | The project milestones | [optional]

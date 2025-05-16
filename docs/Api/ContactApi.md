@@ -15,7 +15,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `createContact()`
 
 ```php
-createContact($contactCreate): string
+createContact($domain, $contactCreate): string
 ```
 
 Create a contact
@@ -27,16 +27,20 @@ Create a contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $contactCreate = new \SynergiTech\Iplicit\Model\ContactCreate(); // \SynergiTech\Iplicit\Model\ContactCreate
 
 try {
-    $result = $apiInstance->createContact($contactCreate);
+    $result = $apiInstance->createContact($domain, $contactCreate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactApi->createContact: ', $e->getMessage(), PHP_EOL;
@@ -47,6 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **contactCreate** | [**\SynergiTech\Iplicit\Model\ContactCreate**](../Model/ContactCreate.md)|  | [optional] |
 
 ### Return type
@@ -55,7 +60,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -69,7 +74,7 @@ No authorization required
 ## `deleteContact()`
 
 ```php
-deleteContact($idOrIntRef)
+deleteContact($idOrIntRef, $domain)
 ```
 
 Delete a contact
@@ -81,6 +86,9 @@ Delete a contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -88,9 +96,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     config: $config
 );
 $idOrIntRef = 'idOrIntRef_example'; // string | Id or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->deleteContact($idOrIntRef);
+    $apiInstance->deleteContact($idOrIntRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactApi->deleteContact: ', $e->getMessage(), PHP_EOL;
 }
@@ -101,6 +110,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrIntRef** | **string**| Id or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -108,7 +118,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -122,7 +132,7 @@ No authorization required
 ## `getContact()`
 
 ```php
-getContact($idOrIntRef): \SynergiTech\Iplicit\Model\ContactRead
+getContact($idOrIntRef, $domain): \SynergiTech\Iplicit\Model\ContactRead
 ```
 
 Get a contact
@@ -134,6 +144,9 @@ Get a contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -141,9 +154,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     config: $config
 );
 $idOrIntRef = 'idOrIntRef_example'; // string | Id or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->getContact($idOrIntRef);
+    $result = $apiInstance->getContact($idOrIntRef, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactApi->getContact: ', $e->getMessage(), PHP_EOL;
@@ -155,6 +169,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrIntRef** | **string**| Id or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -162,7 +177,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -176,7 +191,7 @@ No authorization required
 ## `lockContact()`
 
 ```php
-lockContact($idOrIntRef)
+lockContact($idOrIntRef, $domain)
 ```
 
 Lock the contact
@@ -188,6 +203,9 @@ Lock the contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -195,9 +213,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     config: $config
 );
 $idOrIntRef = 'idOrIntRef_example'; // string | Id or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->lockContact($idOrIntRef);
+    $apiInstance->lockContact($idOrIntRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactApi->lockContact: ', $e->getMessage(), PHP_EOL;
 }
@@ -208,6 +227,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrIntRef** | **string**| Id or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -215,7 +235,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -229,7 +249,7 @@ No authorization required
 ## `unlockContact()`
 
 ```php
-unlockContact($idOrIntRef)
+unlockContact($idOrIntRef, $domain)
 ```
 
 Unlock the contact
@@ -241,6 +261,9 @@ Unlock the contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -248,9 +271,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     config: $config
 );
 $idOrIntRef = 'idOrIntRef_example'; // string | Id or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->unlockContact($idOrIntRef);
+    $apiInstance->unlockContact($idOrIntRef, $domain);
 } catch (Exception $e) {
     echo 'Exception when calling ContactApi->unlockContact: ', $e->getMessage(), PHP_EOL;
 }
@@ -261,6 +285,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrIntRef** | **string**| Id or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -268,7 +293,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -282,7 +307,7 @@ No authorization required
 ## `updateContact()`
 
 ```php
-updateContact($idOrIntRef, $contactUpdate)
+updateContact($idOrIntRef, $domain, $contactUpdate)
 ```
 
 Update a contact
@@ -294,6 +319,9 @@ Update a contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -301,10 +329,11 @@ $apiInstance = new SynergiTech\Iplicit\Api\ContactApi(
     config: $config
 );
 $idOrIntRef = 'idOrIntRef_example'; // string | Id or <a href=\"https://docs.iplicit.com/dev/guide/identifiers/index.html\">internal reference</a> of the contact
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $contactUpdate = new \SynergiTech\Iplicit\Model\ContactUpdate(); // \SynergiTech\Iplicit\Model\ContactUpdate |
 
 try {
-    $apiInstance->updateContact($idOrIntRef, $contactUpdate);
+    $apiInstance->updateContact($idOrIntRef, $domain, $contactUpdate);
 } catch (Exception $e) {
     echo 'Exception when calling ContactApi->updateContact: ', $e->getMessage(), PHP_EOL;
 }
@@ -315,6 +344,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrIntRef** | **string**| Id or &lt;a href&#x3D;\&quot;https://docs.iplicit.com/dev/guide/identifiers/index.html\&quot;&gt;internal reference&lt;/a&gt; of the contact | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **contactUpdate** | [**\SynergiTech\Iplicit\Model\ContactUpdate**](../Model/ContactUpdate.md)|  | [optional] |
 
 ### Return type
@@ -323,7 +353,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

@@ -10,3 +10,4 @@
 /git_push.sh export-ignore
 /phpunit.xml.dist export-ignore
 /swagger-1.8.0.yaml export-ignore
+/swagger-1.13.0.yaml export-ignore

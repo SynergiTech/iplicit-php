@@ -11,7 +11,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `closeSession()`
 
 ```php
-closeSession()
+closeSession($domain)
 ```
 
 Close the session
@@ -23,15 +23,19 @@ Close the session
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\SessionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     config: $config
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $apiInstance->closeSession();
+    $apiInstance->closeSession($domain);
 } catch (Exception $e) {
     echo 'Exception when calling SessionApi->closeSession: ', $e->getMessage(), PHP_EOL;
 }
@@ -39,7 +43,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -47,7 +53,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -61,7 +67,7 @@ No authorization required
 ## `createSessionAPIKey()`
 
 ```php
-createSessionAPIKey($loginApiCredentials): \SynergiTech\Iplicit\Model\SessionResultData
+createSessionAPIKey($domain, $loginApiCredentials): \SynergiTech\Iplicit\Model\SessionResultData
 ```
 
 Create a session with an API Key.
@@ -77,12 +83,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $apiInstance = new SynergiTech\Iplicit\Api\SessionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    config: $config
+    new GuzzleHttp\Client()
 );
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 $loginApiCredentials = new \SynergiTech\Iplicit\Model\LoginApiCredentials(); // \SynergiTech\Iplicit\Model\LoginApiCredentials
 
 try {
-    $result = $apiInstance->createSessionAPIKey($loginApiCredentials);
+    $result = $apiInstance->createSessionAPIKey($domain, $loginApiCredentials);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SessionApi->createSessionAPIKey: ', $e->getMessage(), PHP_EOL;
@@ -93,6 +100,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 | **loginApiCredentials** | [**\SynergiTech\Iplicit\Model\LoginApiCredentials**](../Model/LoginApiCredentials.md)|  | [optional] |
 
 ### Return type

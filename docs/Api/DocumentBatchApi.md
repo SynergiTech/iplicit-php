@@ -10,7 +10,7 @@ All URIs are relative to https://api.iplicit.com, except if the operation define
 ## `unpostDocumentBatch()`
 
 ```php
-unpostDocumentBatch($idOrBatchNo): string
+unpostDocumentBatch($idOrBatchNo, $domain): string
 ```
 
 Unpost a document
@@ -22,6 +22,9 @@ Unpost a document
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure Bearer authorization: Bearer
+$config = SynergiTech\Iplicit\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new SynergiTech\Iplicit\Api\DocumentBatchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -29,9 +32,10 @@ $apiInstance = new SynergiTech\Iplicit\Api\DocumentBatchApi(
     config: $config
 );
 $idOrBatchNo = 'idOrBatchNo_example'; // string | Batch id or Batch number.
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
 
 try {
-    $result = $apiInstance->unpostDocumentBatch($idOrBatchNo);
+    $result = $apiInstance->unpostDocumentBatch($idOrBatchNo, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocumentBatchApi->unpostDocumentBatch: ', $e->getMessage(), PHP_EOL;
@@ -43,6 +47,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **idOrBatchNo** | **string**| Batch id or Batch number. | |
+| **domain** | **string**| Your assigned domain name. Required for all API requests. | |
 
 ### Return type
 
@@ -50,7 +55,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Bearer](../../README.md#Bearer)
 
 ### HTTP request headers
 

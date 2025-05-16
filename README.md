@@ -43,12 +43,13 @@ $apiInstance = new SynergiTech\Iplicit\Api\AttachmentApi(
 $attributeRef = 'attributeRef_example'; // string | Id or name of the attribute
 $sourceId = 'sourceId_example'; // string | id of the source item to attach to
 $attachmentGroupId = 'attachmentGroupId_example'; // string | Id of the attachment group. Use special value 'other' to get attachments without a group.
-$file = "/path/to/file.txt"; // \SplFileObject | Attachment file information
+$domain = 'domain_example'; // string | Your assigned domain name. Required for all API requests.
+$file = '/path/to/file.txt'; // \SplFileObject | Attachment file information
 $description = 'description_example'; // string | Attachment description
-$documentDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Attachment document date
+$documentDate = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Attachment document date
 
 try {
-    $result = $apiInstance->createAttachment($attributeRef, $sourceId, $attachmentGroupId, $file, $description, $documentDate);
+    $result = $apiInstance->createAttachment($attributeRef, $sourceId, $attachmentGroupId, $domain, $file, $description, $documentDate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AttachmentApi->createAttachment: ', $e->getMessage(), PHP_EOL;
@@ -57,6 +58,8 @@ try {
 ```
 
 ## API Endpoints
+
+All URIs are relative to *https://api.iplicit.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -147,6 +150,7 @@ Class | Method | HTTP request | Description
 *DocumentApi* | [**amendDocument**](docs/Api/DocumentApi.md#amenddocument) | **PATCH** /api/Document/{idOrDocNo}/amend | Amend a document
 *DocumentApi* | [**convertDocumentType**](docs/Api/DocumentApi.md#convertdocumenttype) | **POST** /api/Document/{fromDocId}/convert/{toDocType} | Convert a document to another type
 *DocumentApi* | [**createDocument**](docs/Api/DocumentApi.md#createdocument) | **POST** /api/Document | Create a document
+*DocumentApi* | [**deleteDocumentAllocation**](docs/Api/DocumentApi.md#deletedocumentallocation) | **DELETE** /api/Document/{idOrDocNo}/allocations/{allocationId} | Delete a document allocation
 *DocumentApi* | [**deleteDocumentDetailLine**](docs/Api/DocumentApi.md#deletedocumentdetailline) | **DELETE** /api/Document/{docRef}/detail/{docDetailRef} | Delete a document detail line
 *DocumentApi* | [**disputeDocument**](docs/Api/DocumentApi.md#disputedocument) | **POST** /api/Document/{idOrDocNo}/dispute | Dispute a document
 *DocumentApi* | [**getDocument**](docs/Api/DocumentApi.md#getdocument) | **GET** /api/Document/{idOrDocNo} | Get a document by id or document number
@@ -155,6 +159,7 @@ Class | Method | HTTP request | Description
 *DocumentApi* | [**getDocumentMatchReverse**](docs/Api/DocumentApi.md#getdocumentmatchreverse) | **GET** /api/Document/{idOrDocNo}/match/reverse | Get document match reverse details.
 *DocumentApi* | [**getDocumentMatchSummary**](docs/Api/DocumentApi.md#getdocumentmatchsummary) | **GET** /api/Document/{idOrDocNo}/match/outstanding/amount | Get document match summary (amount only).
 *DocumentApi* | [**getDocuments**](docs/Api/DocumentApi.md#getdocuments) | **GET** /api/Document | Get a list of documents with a search filter
+*DocumentApi* | [**reverseDocument**](docs/Api/DocumentApi.md#reversedocument) | **POST** /api/Document/{idOrDocNo}/reverse | Reverse a document
 *DocumentApi* | [**submitDocument**](docs/Api/DocumentApi.md#submitdocument) | **POST** /api/Document/{docId}/submit | Submit the document for authorisation and posting.
 *DocumentApi* | [**unauthoriseDocument**](docs/Api/DocumentApi.md#unauthorisedocument) | **POST** /api/Document/{idOrDocNo}/unauthorise | Unauthorise an approved document (non GL documents only).
 *DocumentApi* | [**unpostDocument**](docs/Api/DocumentApi.md#unpostdocument) | **POST** /api/Document/{idOrDocNo}/unpost | Unpost a document
@@ -181,6 +186,20 @@ Class | Method | HTTP request | Description
 *ProductApi* | [**getProducts**](docs/Api/ProductApi.md#getproducts) | **GET** /api/Product | Get a list of products with a search filter
 *ProductApi* | [**lockProduct**](docs/Api/ProductApi.md#lockproduct) | **POST** /api/Product/{id}/lock | Lock a product
 *ProductApi* | [**updateProduct**](docs/Api/ProductApi.md#updateproduct) | **PATCH** /api/Product/{idOrCode} | Update a product
+*ProductPurchasePriceApi* | [**createProductPurchasePrice**](docs/Api/ProductPurchasePriceApi.md#createproductpurchaseprice) | **POST** /api/Product/{productRef}/PurchasePrice | Create a product purchase price
+*ProductPurchasePriceApi* | [**deleteProductPurchasePrice**](docs/Api/ProductPurchasePriceApi.md#deleteproductpurchaseprice) | **DELETE** /api/Product/{productRef}/PurchasePrice/{priceId} | Delete a product purchase price
+*ProductPurchasePriceApi* | [**getProductPurchasePrice**](docs/Api/ProductPurchasePriceApi.md#getproductpurchaseprice) | **GET** /api/Product/{productRef}/PurchasePrice/{priceId} | Get a product purchase price from priceId
+*ProductPurchasePriceApi* | [**getProductPurchasePrices**](docs/Api/ProductPurchasePriceApi.md#getproductpurchaseprices) | **GET** /api/Product/{productRef}/PurchasePrice | Get all product purchase prices for productRef
+*ProductPurchasePriceApi* | [**lockProductPurchasePrice**](docs/Api/ProductPurchasePriceApi.md#lockproductpurchaseprice) | **POST** /api/Product/{productRef}/PurchasePrice/{priceId}/lock | Lock a product purchase price
+*ProductPurchasePriceApi* | [**unlockProductPurchasePrice**](docs/Api/ProductPurchasePriceApi.md#unlockproductpurchaseprice) | **POST** /api/Product/{productRef}/PurchasePrice/{priceId}/unlock | Unlock a product purchase price
+*ProductPurchasePriceApi* | [**updateProductPurchasePrice**](docs/Api/ProductPurchasePriceApi.md#updateproductpurchaseprice) | **PATCH** /api/Product/{productRef}/PurchasePrice/{priceId} | Update a product purchase price
+*ProductSalePriceApi* | [**createProductSalePrice**](docs/Api/ProductSalePriceApi.md#createproductsaleprice) | **POST** /api/Product/{productRef}/SalePrice | Create a product sale price
+*ProductSalePriceApi* | [**deleteProductSalePrice**](docs/Api/ProductSalePriceApi.md#deleteproductsaleprice) | **DELETE** /api/Product/{productRef}/SalePrice/{priceId} | Delete a product sale price
+*ProductSalePriceApi* | [**getProductSalePrice**](docs/Api/ProductSalePriceApi.md#getproductsaleprice) | **GET** /api/Product/{productRef}/SalePrice/{priceId} | Get a product sale price
+*ProductSalePriceApi* | [**getProductSalePrices**](docs/Api/ProductSalePriceApi.md#getproductsaleprices) | **GET** /api/Product/{productRef}/SalePrice | Get a product sale price
+*ProductSalePriceApi* | [**lockProductSalePrice**](docs/Api/ProductSalePriceApi.md#lockproductsaleprice) | **POST** /api/Product/{productRef}/SalePrice/{priceId}/lock | Lock a product sale price
+*ProductSalePriceApi* | [**unlockProductSalePrice**](docs/Api/ProductSalePriceApi.md#unlockproductsaleprice) | **POST** /api/Product/{productRef}/SalePrice/{priceId}/unlock | Unlock a product sale price
+*ProductSalePriceApi* | [**updateProductSalePrice**](docs/Api/ProductSalePriceApi.md#updateproductsaleprice) | **PATCH** /api/Product/{productRef}/SalePrice/{priceId} | Update a product sale price
 *ProfileApi* | [**getProfile**](docs/Api/ProfileApi.md#getprofile) | **GET** /api/Profile | Get profile of current session
 *ProjectApi* | [**addProjectMilstones**](docs/Api/ProjectApi.md#addprojectmilstones) | **PUT** /api/Project/{projectRef}/milestone | Add a project milestone
 *ProjectApi* | [**addProjectResourceAvailability**](docs/Api/ProjectApi.md#addprojectresourceavailability) | **POST** /api/Project/{projectRef}/availability | Add a project resource availability
@@ -296,10 +315,12 @@ Class | Method | HTTP request | Description
 - [DocDetailDeferred](docs/Model/DocDetailDeferred.md)
 - [DocDetailDeferredCreateUpdate](docs/Model/DocDetailDeferredCreateUpdate.md)
 - [DocDetailUpdate](docs/Model/DocDetailUpdate.md)
+- [DocDetailUpdateReducedFields](docs/Model/DocDetailUpdateReducedFields.md)
 - [DocSummary](docs/Model/DocSummary.md)
 - [DocUpdate](docs/Model/DocUpdate.md)
 - [DocumentAmend](docs/Model/DocumentAmend.md)
 - [DocumentDispute](docs/Model/DocumentDispute.md)
+- [DocumentReverse](docs/Model/DocumentReverse.md)
 - [DocumentTypeRead](docs/Model/DocumentTypeRead.md)
 - [DocumentTypeSetupRead](docs/Model/DocumentTypeSetupRead.md)
 - [ExpenseProductRead](docs/Model/ExpenseProductRead.md)
@@ -309,12 +330,20 @@ Class | Method | HTTP request | Description
 - [ProductCreate](docs/Model/ProductCreate.md)
 - [ProductPostSetup](docs/Model/ProductPostSetup.md)
 - [ProductPurchaseCreate](docs/Model/ProductPurchaseCreate.md)
+- [ProductPurchasePriceCreate](docs/Model/ProductPurchasePriceCreate.md)
+- [ProductPurchasePriceRead](docs/Model/ProductPurchasePriceRead.md)
+- [ProductPurchasePriceUpdate](docs/Model/ProductPurchasePriceUpdate.md)
 - [ProductPurchaseRead](docs/Model/ProductPurchaseRead.md)
 - [ProductPurchaseUpdate](docs/Model/ProductPurchaseUpdate.md)
 - [ProductRead](docs/Model/ProductRead.md)
 - [ProductSaleCreate](docs/Model/ProductSaleCreate.md)
+- [ProductSalePriceCreate](docs/Model/ProductSalePriceCreate.md)
+- [ProductSalePriceRead](docs/Model/ProductSalePriceRead.md)
+- [ProductSalePriceUpdate](docs/Model/ProductSalePriceUpdate.md)
 - [ProductSaleRead](docs/Model/ProductSaleRead.md)
 - [ProductSaleUpdate](docs/Model/ProductSaleUpdate.md)
+- [ProductStockCreate](docs/Model/ProductStockCreate.md)
+- [ProductStockUpdate](docs/Model/ProductStockUpdate.md)
 - [ProductSummary](docs/Model/ProductSummary.md)
 - [ProductUpdate](docs/Model/ProductUpdate.md)
 - [ProfileRead](docs/Model/ProfileRead.md)
@@ -338,11 +367,30 @@ Class | Method | HTTP request | Description
 - [Table](docs/Model/Table.md)
 - [TimesheetProductRead](docs/Model/TimesheetProductRead.md)
 
+## Authorization
+
+### Bearer
+
+- **Type**: Bearer authentication
+
+## Tests
+
+To run the tests, use:
+
+```bash
+composer install
+vendor/bin/phpunit
+```
+
+## Author
+
+
+
 ## About this package
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.8.0`
-    - Package version: `1.8.0`
-    - Generator version: `7.8.0-SNAPSHOT`
+- API version: `1.13.0`
+    - Package version: `1.13.0`
+    - Generator version: `7.14.0-SNAPSHOT`
 - Build package: `org.openapitools.codegen.languages.PhpNextgenClientCodegen`

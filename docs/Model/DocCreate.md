@@ -9,8 +9,9 @@ Name | Type | Description | Notes
 **docSerieId** | **string** | The document series id | [optional]
 **docTypeId** | **string** | The document type id |
 **legalEntityId** | **string** | The document legal entity id | [optional]
+**cdacId** | **string** | The document custom data access control (CDAC) Id | [optional]
 **contactAccountId** | **string** | The document contact account id | [optional]
-**periodId** | **string** | The document peroid id | [optional]
+**periodId** | **string** | The document period id | [optional]
 **accountId** | **string** | The document account id | [optional]
 **post** | **array<string,string>** | The document posting attributes | [optional]
 **taxAuthorityId** | **string** | The document tax authority id | [optional]
@@ -52,5 +53,7 @@ Name | Type | Description | Notes
 **ext** | **array<string,mixed>** | The document custom fields | [optional]
 **textHeader** | **string** | The document text header | [optional]
 **textFooter** | **string** | The document text footer | [optional]
+**orderNo** | **string** | The document order number | [optional]
+**deliveryDate** | **\DateTime** | The document delivery date | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

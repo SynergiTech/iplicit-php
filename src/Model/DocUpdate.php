@@ -60,6 +60,7 @@ class DocUpdate implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $openAPITypes = [
         'docTypeId' => 'string',
         'legalEntityId' => 'string',
+        'cdacId' => 'string',
         'contactAccountId' => 'string',
         'periodId' => 'string',
         'accountId' => 'string',
@@ -103,6 +104,7 @@ class DocUpdate implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $openAPIFormats = [
         'docTypeId' => null,
         'legalEntityId' => null,
+        'cdacId' => null,
         'contactAccountId' => null,
         'periodId' => null,
         'accountId' => null,
@@ -146,6 +148,7 @@ class DocUpdate implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $openAPINullables = [
         'docTypeId' => true,
         'legalEntityId' => true,
+        'cdacId' => true,
         'contactAccountId' => true,
         'periodId' => true,
         'accountId' => true,
@@ -269,6 +272,7 @@ class DocUpdate implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $attributeMap = [
         'docTypeId' => 'docTypeId',
         'legalEntityId' => 'legalEntityId',
+        'cdacId' => 'cdacId',
         'contactAccountId' => 'contactAccountId',
         'periodId' => 'periodId',
         'accountId' => 'accountId',
@@ -312,6 +316,7 @@ class DocUpdate implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $setters = [
         'docTypeId' => 'setDocTypeId',
         'legalEntityId' => 'setLegalEntityId',
+        'cdacId' => 'setCdacId',
         'contactAccountId' => 'setContactAccountId',
         'periodId' => 'setPeriodId',
         'accountId' => 'setAccountId',
@@ -355,6 +360,7 @@ class DocUpdate implements ModelInterface, ArrayAccess, JsonSerializable
     protected static array $getters = [
         'docTypeId' => 'getDocTypeId',
         'legalEntityId' => 'getLegalEntityId',
+        'cdacId' => 'getCdacId',
         'contactAccountId' => 'getContactAccountId',
         'periodId' => 'getPeriodId',
         'accountId' => 'getAccountId',
@@ -448,6 +454,7 @@ class DocUpdate implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $this->setIfExists('docTypeId', $data ?? [], null);
         $this->setIfExists('legalEntityId', $data ?? [], null);
+        $this->setIfExists('cdacId', $data ?? [], null);
         $this->setIfExists('contactAccountId', $data ?? [], null);
         $this->setIfExists('periodId', $data ?? [], null);
         $this->setIfExists('accountId', $data ?? [], null);
@@ -516,6 +523,10 @@ class DocUpdate implements ModelInterface, ArrayAccess, JsonSerializable
 
         if (!is_null($this->container['legalEntityId']) && (mb_strlen($this->container['legalEntityId']) > 50)) {
             $invalidProperties[] = "invalid value for 'legalEntityId', the character length must be smaller than or equal to 50.";
+        }
+
+        if (!is_null($this->container['cdacId']) && (mb_strlen($this->container['cdacId']) > 50)) {
+            $invalidProperties[] = "invalid value for 'cdacId', the character length must be smaller than or equal to 50.";
         }
 
         if (!is_null($this->container['contactAccountId']) && (mb_strlen($this->container['contactAccountId']) > 50)) {
@@ -665,6 +676,44 @@ class DocUpdate implements ModelInterface, ArrayAccess, JsonSerializable
         }
 
         $this->container['legalEntityId'] = $legalEntityId;
+
+        return $this;
+    }
+
+    /**
+     * Gets cdacId
+     *
+     * @return string|null
+     */
+    public function getCdacId(): ?string
+    {
+        return $this->container['cdacId'];
+    }
+
+    /**
+     * Sets cdacId
+     *
+     * @param string|null $cdacId The document custom data access control (CDAC) Id
+     *
+     * @return $this
+     */
+    public function setCdacId(?string $cdacId): static
+    {
+        if (is_null($cdacId)) {
+            array_push($this->openAPINullablesSetToNull, 'cdacId');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cdacId', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($cdacId) && (mb_strlen($cdacId) > 50)) {
+            throw new InvalidArgumentException('invalid length for $cdacId when calling DocUpdate., must be smaller than or equal to 50.');
+        }
+
+        $this->container['cdacId'] = $cdacId;
 
         return $this;
     }

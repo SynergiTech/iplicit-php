@@ -65,6 +65,7 @@ class Doc implements ModelInterface, ArrayAccess, JsonSerializable
         'docDate' => '\DateTime',
         'description' => 'string',
         'legalEntityId' => 'string',
+        'cdacId' => 'string',
         'contactAccountId' => 'string',
         'taxDate' => '\DateTime',
         'dueDate' => '\DateTime',
@@ -136,6 +137,7 @@ class Doc implements ModelInterface, ArrayAccess, JsonSerializable
         'docDate' => 'date-time',
         'description' => null,
         'legalEntityId' => 'uuid',
+        'cdacId' => 'uuid',
         'contactAccountId' => 'uuid',
         'taxDate' => 'date-time',
         'dueDate' => 'date-time',
@@ -207,6 +209,7 @@ class Doc implements ModelInterface, ArrayAccess, JsonSerializable
         'docDate' => true,
         'description' => true,
         'legalEntityId' => true,
+        'cdacId' => true,
         'contactAccountId' => true,
         'taxDate' => true,
         'dueDate' => true,
@@ -358,6 +361,7 @@ class Doc implements ModelInterface, ArrayAccess, JsonSerializable
         'docDate' => 'docDate',
         'description' => 'description',
         'legalEntityId' => 'legalEntityId',
+        'cdacId' => 'cdacId',
         'contactAccountId' => 'contactAccountId',
         'taxDate' => 'taxDate',
         'dueDate' => 'dueDate',
@@ -429,6 +433,7 @@ class Doc implements ModelInterface, ArrayAccess, JsonSerializable
         'docDate' => 'setDocDate',
         'description' => 'setDescription',
         'legalEntityId' => 'setLegalEntityId',
+        'cdacId' => 'setCdacId',
         'contactAccountId' => 'setContactAccountId',
         'taxDate' => 'setTaxDate',
         'dueDate' => 'setDueDate',
@@ -500,6 +505,7 @@ class Doc implements ModelInterface, ArrayAccess, JsonSerializable
         'docDate' => 'getDocDate',
         'description' => 'getDescription',
         'legalEntityId' => 'getLegalEntityId',
+        'cdacId' => 'getCdacId',
         'contactAccountId' => 'getContactAccountId',
         'taxDate' => 'getTaxDate',
         'dueDate' => 'getDueDate',
@@ -621,6 +627,7 @@ class Doc implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('docDate', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('legalEntityId', $data ?? [], null);
+        $this->setIfExists('cdacId', $data ?? [], null);
         $this->setIfExists('contactAccountId', $data ?? [], null);
         $this->setIfExists('taxDate', $data ?? [], null);
         $this->setIfExists('dueDate', $data ?? [], null);
@@ -955,6 +962,40 @@ class Doc implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['legalEntityId'] = $legalEntityId;
+
+        return $this;
+    }
+
+    /**
+     * Gets cdacId
+     *
+     * @return string|null
+     */
+    public function getCdacId(): ?string
+    {
+        return $this->container['cdacId'];
+    }
+
+    /**
+     * Sets cdacId
+     *
+     * @param string|null $cdacId The document custom data access control (CDAC) Id
+     *
+     * @return $this
+     */
+    public function setCdacId(?string $cdacId): static
+    {
+        if (is_null($cdacId)) {
+            array_push($this->openAPINullablesSetToNull, 'cdacId');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cdacId', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cdacId'] = $cdacId;
 
         return $this;
     }
